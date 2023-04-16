@@ -1,4 +1,4 @@
-package com.example.loginandregister.utils;
+package com.example.fufu.utils;
 
 public class Constants {
 }
