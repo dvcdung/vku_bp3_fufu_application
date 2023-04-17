@@ -5,16 +5,16 @@
         android:id="@+id/bottom_navigation_bar_fufu"
         android:icon="@drawable/ic_camera"
         app:showAsAction="ifRoom"
-        android:title="FuFu" />
+        android:title="@string/fufu" />
 
     <item
         android:id="@+id/bottom_navigation_bar_home"
         android:icon="@drawable/ic_home"
         app:showAsAction="always"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/bottom_navigation_bar_orders"
         android:icon="@drawable/ic_bill"
         app:showAsAction="always"
-        android:title="Orders" />
+        android:title="@string/orders" />
 </menu>

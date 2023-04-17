@@ -20,10 +20,14 @@
         app:layout_constraintBottom_toTopOf="@id/bottom_app"
         android:background="@color/cyan_50"
         android:orientation="vertical" >
-        <ImageView
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_launcher_foreground"
+
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/main_navigation_graph"
             />
     </LinearLayout>
     <include
