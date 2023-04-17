@@ -5,4 +5,14 @@
     <string name="home">Home</string>
     <string name="orders">Orders</string>
     <string name="button_name">demo</string>
+
+<!--    Home Fragment-->
+    <string name="deals">Deals</string>
+    <string name="store">Store</string>
+    <string name="food">Food</string>
+    <string name="favorite">Favorite</string>
+    <string name="travel">Travel</string>
+    <string name="food_around_you">Món ăn quanh bạn</string>
+    <string name="see_more">Xem thêm</string>
+    <string name="maybe_you_like">Có thể bạn thích</string>
 </resources>

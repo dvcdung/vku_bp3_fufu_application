@@ -6,6 +6,10 @@
     <color name="background_color_0">#E0F7FA</color>
 <!--    border-->
     <color name="border_color_0">#D8D8D8</color>
+<!--    text-->
+    <color name="text_color_0">#252525</color>
+    <color name="text_color_1">#595959</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 

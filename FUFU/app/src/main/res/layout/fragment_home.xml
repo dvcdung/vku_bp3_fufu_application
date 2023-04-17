@@ -9,6 +9,7 @@
     android:orientation="vertical"
     tools:context=".ui.main_component.fragment.HomeFragment">
 
+<!--    Features of app-->
     <GridLayout
         android:id="@+id/GridLayout1"
         android:layout_width="match_parent"
@@ -49,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Deals"
+                    android:text="@string/deals"
                     android:textAlignment="center"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -87,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Store"
+                    android:text="@string/store"
                     android:textAlignment="center"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -125,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Food"
+                    android:text="@string/food"
                     android:textAlignment="center"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -163,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Favorite"
+                    android:text="@string/favorite"
                     android:textAlignment="center"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -201,7 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="Travel"
+                    android:text="@string/travel"
                     android:textAlignment="center"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -209,17 +210,73 @@
 
     </GridLayout>
 
-    <TextView
-        android:id="@+id/text_a"
-        android:layout_width="wrap_content"
+<!--    Food around you-->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hêlo"
-        android:textColor="@color/Red"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_0"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:text="@string/food_around_you"
+            />
+        <TextView
+            android:id="@+id/act_see_more_food_around_you"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/text_color_1"
+            android:text="@string/see_more"
+            />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_food_around_you_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        android:scrollbarSize="0dp"
         />
-    <Button
-        android:id="@+id/btn_a"
-        android:layout_width="wrap_content"
+
+<!--    Maybe you like-->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ddd"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_0"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:text="@string/maybe_you_like"
+            />
+        <TextView
+            android:id="@+id/act_see_more_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/text_color_1"
+            android:text="@string/see_more"
+            />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_maybe_you_like_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        android:scrollbarSize="0dp"
         />
 </LinearLayout>

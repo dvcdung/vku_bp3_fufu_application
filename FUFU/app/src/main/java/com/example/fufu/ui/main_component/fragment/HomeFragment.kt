@@ -34,10 +34,7 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        view.findViewById<Button>(R.id.btn_a).setOnClickListener() {
-            Toast.makeText(this.context, "Home", Toast.LENGTH_SHORT).show()
-            view.findViewById<TextView>(R.id.text_a).text = "Hello"
-        }
+
         super.onViewCreated(view, savedInstanceState)
     }
 }
