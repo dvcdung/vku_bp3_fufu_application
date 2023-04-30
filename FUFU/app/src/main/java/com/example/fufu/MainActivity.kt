@@ -1,5 +1,6 @@
 package com.example.fufu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil.setContentView
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.fufu.databinding.ActivityMainBinding
+import com.example.fufu.ui.shop_component.RestaurantActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -70,5 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
         bottomNavigationView.setOnNavigationItemReselectedListener {
         }
+
+        startActivity(Intent(this, RestaurantActivity::class.java))
     }
 }

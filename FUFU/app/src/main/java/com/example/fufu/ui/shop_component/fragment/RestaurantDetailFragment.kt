@@ -1,4 +1,4 @@
-package com.example.fufu.ui.main_component.fragment
+package com.example.fufu.ui.shop_component.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -6,37 +6,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import com.example.fufu.R
-import com.example.fufu.databinding.FragmentHomeBinding
-import com.example.fufu.ui.main_component.viewmodel.HomeViewModel
+import com.example.fufu.ui.shop_component.viewmodel.RestaurantDetailViewModel
 
-class HomeFragment : Fragment() {
+class RestaurantDetailFragment : Fragment() {
 
     companion object {
-        fun newInstance() = HomeFragment()
+        fun newInstance() = RestaurantDetailFragment()
     }
 
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModel: RestaurantDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_restaurant_detail, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        var binding: FragmentHomeBinding = FragmentHomeBinding.inflate(layoutInflater)
+        viewModel = ViewModelProvider(this).get(RestaurantDetailViewModel::class.java)
+        // TODO: Use the ViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
     }
+
 }

@@ -6,6 +6,8 @@
     <string name="orders">Orders</string>
     <string name="button_name">demo</string>
 
+<!--    Constance-->
+    <string name="menu">MENU</string>
     <!--    Home Fragment-->
     <string name="deals">Deals</string>
     <string name="store">Store</string>
@@ -15,4 +17,13 @@
     <string name="food_around_you">Món ăn quanh bạn</string>
     <string name="see_more">Xem thêm</string>
     <string name="maybe_you_like">Có thể bạn thích</string>
+    <string name="title_activity_shop">ShopActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
