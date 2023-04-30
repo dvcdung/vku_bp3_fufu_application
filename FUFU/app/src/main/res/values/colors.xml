@@ -9,6 +9,7 @@
 <!--    text-->
     <color name="text_color_0">#252525</color>
     <color name="text_color_1">#595959</color>
+    <color name="text_color_2">#959595</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
