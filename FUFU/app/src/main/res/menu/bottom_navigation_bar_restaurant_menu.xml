@@ -3,18 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/bottom_navigation_bar_menu"
+        android:icon="@drawable/ic_menu"
         app:showAsAction="ifRoom"
-        android:title="Menu" />
+        android:title="@string/res_btn_menu" />
     <item
         android:id="@+id/bottom_navigation_bar_reviews"
-        app:showAsAction="always"
-        android:title="Reviews" />
+        android:icon="@drawable/ic_review"
+        app:showAsAction="ifRoom"
+        android:title="@string/res_btn_reviews" />
     <item
         android:id="@+id/bottom_navigation_bar_images"
+        android:icon="@drawable/ic_image"
         app:showAsAction="always"
-        android:title="Images" />
+        android:title="@string/res_btn_images" />
     <item
         android:id="@+id/bottom_navigation_bar_map"
+        android:icon="@drawable/ic_map"
         app:showAsAction="always"
-        android:title="Map" />
+        android:title="@string/res_btn_map" />
 </menu>

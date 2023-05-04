@@ -1,6 +1,7 @@
 package com.example.fufu
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil.setContentView
@@ -72,6 +73,11 @@ class MainActivity : AppCompatActivity() {
         }
         bottomNavigationView.setOnNavigationItemReselectedListener {
         }
+
+//        //SharedPreferences
+//        val sharedPref = getSharedPreferences("currentUser", MODE_PRIVATE)
+//        sharedPref.edit().putString("userId", "1").apply()
+//        sharedPref.edit().putString("userRole", "1").apply()
 
         startActivity(Intent(this, RestaurantActivity::class.java))
     }
