@@ -78,7 +78,5 @@ class MainActivity : AppCompatActivity() {
 //        val sharedPref = getSharedPreferences("currentUser", MODE_PRIVATE)
 //        sharedPref.edit().putString("userId", "1").apply()
 //        sharedPref.edit().putString("userRole", "1").apply()
-
-        startActivity(Intent(this, RestaurantActivity::class.java))
     }
 }

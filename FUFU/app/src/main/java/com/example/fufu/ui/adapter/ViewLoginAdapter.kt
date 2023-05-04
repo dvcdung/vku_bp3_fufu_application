@@ -1,11 +1,11 @@
-package com.example.fufu.ui.main_component.adapter
+package com.example.fufu.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.fufu.ui.main_component.fragment.SignInFragment
-import com.example.fufu.ui.main_component.fragment.SignUpFragment
+import com.example.fufu.ui.log_component.fragment.SignInFragment
+import com.example.fufu.ui.log_component.fragment.SignUpFragment
 
 class ViewLoginAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
