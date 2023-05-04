@@ -1,10 +1,10 @@
-package com.example.fufu
+package com.example.fufu.ui.log_component
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fufu.databinding.ActivitySignInSignUpBinding
-import com.example.fufu.ui.main_component.adapter.ViewLoginAdapter
+import com.example.fufu.ui.adapter.ViewLoginAdapter
 import com.google.android.material.tabs.TabLayout
 
 class SignInSignUpActivity : AppCompatActivity() {

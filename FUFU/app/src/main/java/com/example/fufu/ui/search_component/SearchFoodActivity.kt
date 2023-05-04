@@ -1,8 +1,9 @@
-package com.example.fufu
+package com.example.fufu.ui.search_component
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fufu.R
 import com.example.fufu.data.model.FoodSearchModel
 import com.example.fufu.databinding.ActivitySearchFoodBinding
 import com.example.fufu.ui.adapter.FoodSearchAdapter
