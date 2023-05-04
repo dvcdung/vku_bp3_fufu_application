@@ -1,12 +1,12 @@
 const db = require('../config/db');
 
-const RestarantModel = () => {
+const RestaurantModel = () => {
     const restarantModel = {};
 
     restarantModel.getRestaurant = async (userId) => {
         let restaurantList = [];
         restaurantList = await new Promise((resolve, reject) => {
-            let sql = "select * from restaurant where userId=?";
+            let sql = "SELECT R.resName,R.resAvt,R.resAddress,R.resLatitude,R.resLongitude,R.resPhone,R.resDescription,R.resDescription,R.resOpenTime,R.resSeat,R.createdAt,R.updatedAt,R.userId,COALESCE(AVG(V.revPoint), 0) as revAvg, COUNT(V.reviewId) as revAmount FROM restaurant R LEFT JOIN review V ON R.resId = V.resId WHERE R.resId=? GROUP BY R.resName,R.resAvt,R.resAddress,R.resLatitude,R.resLongitude,R.resPhone,R.resDescription,R.resDescription,R.resOpenTime,R.resSeat,R.createdAt,R.updatedAt,R.userId;";
             db.query(
                 sql,
                 [userId],
@@ -21,8 +21,18 @@ const RestarantModel = () => {
 
         return restaurantList;
     }
+    restarantModel.createRestaurant = (newRestaurant) => {
+        let sql = "INSERT INTO `restaurant` (`resName`, `resAvt`, `resAddress`, `resLatitude`, `reslongitude`, `resPhone`, `resDescription`, `resOpenTime`, `resSeat`, `userId`) VALUES ?";
+        db.query(
+            sql,
+            [[newRestaurant]],
+            (err, _ ) => {
+                if (err) throw err;
+            }
+        );
+    }
 
     return restarantModel;
 }
 
-module.exports = RestarantModel;
+module.exports = RestaurantModel;
