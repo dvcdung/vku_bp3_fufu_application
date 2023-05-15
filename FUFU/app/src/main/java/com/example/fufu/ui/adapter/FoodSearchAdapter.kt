@@ -1,29 +1,31 @@
 package com.example.fufu.ui.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fufu.R
 import com.example.fufu.data.model.FoodSearchModel
+import com.example.fufu.data.network.food.ClickItemFoodListener
+import com.example.fufu.ui.detail_component.DetailActivity
+import com.google.android.material.card.MaterialCardView
 
-class FoodSearchAdapter(foodSearchList: List<FoodSearchModel>, var context: Context)
+class FoodSearchAdapter(var foodSearchList: List<FoodSearchModel>, var itemListener: ClickItemFoodListener)
     : RecyclerView.Adapter<FoodSearchAdapter.FoodViewHolder>(){
-
-    private var foodList: List<FoodSearchModel> = ArrayList()
-
-    init {
-        this.foodList = foodSearchList
-    }
 
     class FoodViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val foodImg: ImageView = view.findViewById(R.id.img_food)
         val foodName: TextView = view.findViewById(R.id.item_name)
         val foodRes: TextView = view.findViewById(R.id.item_res)
+        val foodDes: TextView = view.findViewById(R.id.item_des)
         val foodPrice: TextView = view.findViewById(R.id.item_price)
+        val itemClick: MaterialCardView = view.findViewById(R.id.layoutClick)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
@@ -32,12 +34,23 @@ class FoodSearchAdapter(foodSearchList: List<FoodSearchModel>, var context: Cont
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
-        holder.foodImg.setImageResource(foodList[position].logo)
-        holder.foodName.text = foodList[position].foodName
-        holder.foodRes.text = foodList[position].foodRes
-        holder.foodPrice.text = foodList[position].foodPrice.toString()
+        val foodSearch: FoodSearchModel = foodSearchList[position]
+        Glide.with(holder.foodName.context).load("http://192.168.1.8/fufuAPI/images/" + foodSearch.itemImg).into(holder.foodImg)
+        holder.foodName.text = foodSearch.itemName
+        holder.foodRes.text = foodSearch.resName
+        holder.foodDes.text = foodSearch.itemDes
+        holder.foodPrice.text = foodSearch.itemPrice.toString()
+
+        holder.itemClick.setOnClickListener {
+            itemListener.onClickItemFood(foodSearch)
+        }
     }
 
-    override fun getItemCount() = foodList.size
+    override fun getItemCount() = foodSearchList.size
+
+    fun setFilteredList(foodList: List<FoodSearchModel>){
+        this.foodSearchList = foodList
+        notifyDataSetChanged()
+    }
 
 }

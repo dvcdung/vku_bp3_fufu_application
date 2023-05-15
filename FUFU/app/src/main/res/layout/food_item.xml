@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="8dp"
     app:cardUseCompatPadding="true"
+    android:id="@+id/layoutClick"
     app:cardElevation="6dp">
 
     <androidx.cardview.widget.CardView
@@ -56,6 +57,16 @@
                     android:drawableLeft="@drawable/ic_baseline_money_24"
                     android:drawablePadding="6dp"
                     android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/item_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12312312123"
+                    android:drawableLeft="@drawable/ic_baseline_money_24"
+                    android:drawablePadding="6dp"
+                    android:textSize="18dp"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 

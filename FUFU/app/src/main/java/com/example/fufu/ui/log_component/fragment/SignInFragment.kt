@@ -6,34 +6,64 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.fufu.R
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class SignInFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     private lateinit var btnSignIn: Button
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var edtAccountLog: EditText
+    private lateinit var edtPassLog: EditText
+
+    private lateinit var email: String
+    private lateinit var pass: String
+
+    private lateinit var tvError: TextView
+    private lateinit var progressBar: ProgressBar
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btnSignIn = view.findViewById(R.id.btn_sign_in)
+        initView()
         btnSignIn.setOnClickListener {
-            Log.e("pp", "singIn")
+            email = edtAccountLog.text.toString()
+            pass = edtPassLog.text.toString()
+            progressBar.visibility = View.VISIBLE
+            tvError.visibility = View.GONE
+            val queue: RequestQueue = Volley.newRequestQueue(context)
+            val url = "http://192.168.1.8/fufuAPI/signIn.php"
+            val stringRequest = object : StringRequest(
+                Method.POST, url,
+                Response.Listener<String> { response ->
+                    progressBar.visibility = View.GONE
+
+                },
+                Response.ErrorListener { error ->
+                    progressBar.visibility = View.GONE
+                    tvError.text = error.localizedMessage
+                    tvError.visibility = View.VISIBLE
+                }) {
+                override fun getParams(): Map<String, String> {
+                    val params: MutableMap<String, String> = HashMap()
+                    params["email"] = email
+                    params["pass"] = pass
+                    return params
+                }
+            }
+            queue.add(stringRequest)
         }
+    }
+
+    private fun initView(){
+        btnSignIn = view?.findViewById(R.id.btnSignIn)!!
+        edtAccountLog = view?.findViewById(R.id.edtAccountLogIn)!!
+        edtPassLog = view?.findViewById(R.id.edtPassLogIn)!!
+        tvError = view?.findViewById(R.id.tvErrorLog)!!
+        progressBar = view?.findViewById(R.id.progressBarLog)!!
     }
 
     override fun onCreateView(
@@ -43,14 +73,4 @@ class SignInFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_sign_in, container, false)
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SignInFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

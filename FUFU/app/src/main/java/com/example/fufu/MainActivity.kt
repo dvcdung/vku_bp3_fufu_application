@@ -3,6 +3,7 @@ package com.example.fufu
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
@@ -11,8 +12,10 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.fufu.databinding.ActivityMainBinding
+import com.example.fufu.ui.search_component.SearchFoodActivity
 import com.example.fufu.ui.shop_component.RestaurantActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.search.SearchView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -74,5 +77,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         startActivity(Intent(this, RestaurantActivity::class.java))
+
+        //search item food
+        binding.topApp.searchBar.setOnSearchClickListener {
+            val intent = Intent(this, SearchFoodActivity::class.java)
+            startActivity(intent)
+        }
+
+        //btn go to ui user
+        binding.topApp.btnAvatar.setOnClickListener {
+            Toast.makeText(this, "i cu i cu", Toast.LENGTH_SHORT).show()
+        }
     }
 }

@@ -241,8 +241,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="horizontal"
         android:scrollbars="horizontal"
-        android:scrollbarSize="0dp"
-        />
+        android:scrollbarSize="0dp"/>
 
 <!--    Maybe you like-->
     <LinearLayout
