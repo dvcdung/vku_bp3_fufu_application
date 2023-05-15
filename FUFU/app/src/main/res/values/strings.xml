@@ -8,9 +8,14 @@
 
     <!--    Constance-->
     <string name="menu">MENU</string>
+    <string name="res_btn_menu">Menu</string>
+    <string name="res_btn_reviews">Reviews</string>
+    <string name="res_btn_images">Images</string>
+    <string name="res_btn_map">Map</string>
+
     <!--    Home Fragment-->
     <string name="deals">Deals</string>
-    <string name="store">Store</string>
+    <string name="shop">Shop</string>
     <string name="food">Food</string>
     <string name="favorite">Favorite</string>
     <string name="travel">Travel</string>

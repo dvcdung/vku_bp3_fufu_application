@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:backgroundTint="@color/white"
+        app:labelVisibilityMode="labeled"
         app:itemTextColor="@color/color_selector"
+        app:itemIconTint="@color/color_selector"
         app:menu="@menu/bottom_navigation_bar_restaurant_menu" />
 </LinearLayout>

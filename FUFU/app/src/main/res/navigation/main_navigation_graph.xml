@@ -16,6 +16,9 @@
         android:name="com.example.fufu.ui.main_component.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_restaurantActivity"
+            app:destination="@id/restaurantActivity" />
     </fragment>
     <fragment
         android:id="@+id/ordersFragment"
@@ -23,4 +26,9 @@
         android:label="fragment_orders"
         tools:layout="@layout/fragment_orders" >
     </fragment>
+    <activity
+        android:id="@+id/restaurantActivity"
+        android:name="com.example.fufu.ui.shop_component.RestaurantActivity"
+        android:label="activity_restaurant"
+        tools:layout="@layout/activity_restaurant" />
 </navigation>

@@ -1,10 +1,11 @@
-const RestarantModel = require("../model/Restaurant");
+const restaurantModel = require("../../model/Restaurant");
 
 const restaurantController = () => {
     const resController = {};
 
     resController.index = async (req, res) => {
-        res.send(await RestarantModel().getRestaurant(req.params.userId));
+        res.status(200);
+        res.send(await restaurantModel().getRestaurant(req.params.resId));
     }
 
     return resController;

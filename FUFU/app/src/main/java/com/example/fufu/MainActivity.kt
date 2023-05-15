@@ -1,6 +1,7 @@
 package com.example.fufu
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -88,5 +89,9 @@ class MainActivity : AppCompatActivity() {
         binding.topApp.btnAvatar.setOnClickListener {
             Toast.makeText(this, "i cu i cu", Toast.LENGTH_SHORT).show()
         }
+        //SharedPreferences
+        val sharedPref = getSharedPreferences("currentUser", MODE_PRIVATE)
+        sharedPref.edit().putString("userId", "1").apply()
+        sharedPref.edit().putString("userRole", "1").apply()
     }
 }
