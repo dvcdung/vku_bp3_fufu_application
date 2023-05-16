@@ -2,7 +2,7 @@ package com.example.fufu.data.model
 
 data class FoodSearchModel(
     val itemId: Int,
-    val itemImg: Int,
+    val itemImg: String,
     val itemName: String,
     val resId: Int,
     val resName: String,
