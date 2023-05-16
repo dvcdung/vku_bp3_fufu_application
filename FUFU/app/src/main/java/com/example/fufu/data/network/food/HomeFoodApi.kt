@@ -9,7 +9,7 @@ import retrofit2.http.GET
 
 interface HomeFoodApi {
     companion object {
-        val retrofit: Retrofit = Retrofit.Builder().baseUrl("http://192.168.1.131:80/fufuAPI/")
+        val retrofit: Retrofit = Retrofit.Builder().baseUrl("http://192.168.1.132:80/fufuAPI/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
