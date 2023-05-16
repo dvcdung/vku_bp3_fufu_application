@@ -12,6 +12,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.fufu.asset.Helper
 import com.example.fufu.databinding.ActivityMainBinding
 import com.example.fufu.ui.info_component.InfoActivity
 import com.example.fufu.ui.search_component.SearchFoodActivity
@@ -75,17 +76,15 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        bottomNavigationView.setOnNavigationItemReselectedListener {
-        }
+        bottomNavigationView.setOnNavigationItemReselectedListener {  }
 
-//        startActivity(Intent(this, RestaurantActivity::class.java))
+        //startActivity(Intent(this, RestaurantActivity::class.java))
 
         //search item food
         binding.topApp.searchBar.setOnSearchClickListener {
             val intent = Intent(this, SearchFoodActivity::class.java)
             startActivity(intent)
         }
-
         //btn go to ui user
         binding.topApp.btnAvatar.setOnClickListener {
             val i = Intent(this, InfoActivity::class.java)
@@ -95,5 +94,6 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("currentUser", MODE_PRIVATE)
         sharedPref.edit().putString("userId", "1").apply()
         sharedPref.edit().putString("userRole", "1").apply()
+        sharedPref.edit().putString("resId", "1").apply()
     }
 }

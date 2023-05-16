@@ -14,6 +14,6 @@ data class Restaurant(
     val createdAt: String,
     val updatedAt: String,
     val userId: String,
-    val revAvg: Int,
+    val revAvg: Float,
     val revAmount: Int
 )

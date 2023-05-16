@@ -2,8 +2,8 @@
 <layout>
     <data>
         <variable
-            name="item"
-            type="com.example.fufu.data.model.Item" />
+            name="cartItem"
+            type="com.example.fufu.data.model.CartItem" />
     </data>
 
     <LinearLayout
@@ -27,7 +27,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="1"
             android:orientation="vertical"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp">
@@ -36,7 +36,7 @@
                 android:id="@+id/menu_item_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{item.itemName}"
+                android:text="@{cartItem.item.itemName}"
                 android:textColor="@color/text_color_0"
                 android:textSize="@dimen/textSize" />
 
@@ -44,35 +44,40 @@
                 android:id="@+id/menu_item_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text='@{"Giá: "+ item.itemPrice}'
-                android:textColor="@color/text_color_0"
+                android:text='@{"Giá: "+ String.valueOf(cartItem.item.itemPrice)}'
+                android:textColor="@color/text_color_1"
                 android:textSize="@dimen/textDetail" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="105dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center">
             <ImageButton
-                android:id="@+id/btn_add_cart"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/j_btn_card"
+                android:id="@+id/btn_decrease"
+                android:layout_width="35dp"
+                android:layout_height="33dp"
                 android:backgroundTint="@color/primary_color"
-                android:src="@drawable/ic_add_card"
-                app:tint="@color/white"
+                android:src="@drawable/ic_minus"
                 />
+
+            <TextView
+                android:id="@+id/cart_amount"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@{String.valueOf(cartItem.amount)}"
+                android:textColor="@color/text_color_1"
+                android:textSize="@dimen/textTitleSize"
+                android:textStyle="bold"
+                />
+
             <ImageButton
-                android:id="@+id/btn_remove_cart"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/j_btn_card"
-                android:backgroundTint="@color/red_600"
-                android:src="@drawable/ic_remove_cart"
-                app:tint="@color/white"
-                android:visibility="gone"
-                />
+                android:id="@+id/btn_increase"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:backgroundTint="@color/primary_color"
+                android:src="@drawable/ic_add" />
         </LinearLayout>
     </LinearLayout>
 </layout>

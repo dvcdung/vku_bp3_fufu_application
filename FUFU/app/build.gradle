@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    //To use data binding annotations in Kotlin, apply the 'kotlin-kapt' plugin in your module's build.gradle
+    id 'kotlin-kapt'
 }
 
 android {
@@ -63,13 +65,13 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     // registration
     implementation 'com.android.volley:volley:1.2.1'
-
     // retrofit
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.google.code.gson:gson:2.10.1'
 
-    // glide
+    //Glide to load image from url
     implementation 'com.github.bumptech.glide:glide:4.15.1'
+
     implementation 'de.hdodenhof:circleimageview:1.2.1'
 }
