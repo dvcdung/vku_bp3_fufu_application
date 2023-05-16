@@ -63,6 +63,7 @@ class HomeFragment : Fragment() {
             if(Helper().checkUserRole(requireContext())) {
                 val intent = Intent(activity, RestaurantActivity::class.java)
                 intent.putExtra("userId", Helper().getCurrentUser(requireContext()))
+                intent.putExtra("resId", Helper().getCurrentResId(requireContext()))
                 startActivity(intent)
             }
         }

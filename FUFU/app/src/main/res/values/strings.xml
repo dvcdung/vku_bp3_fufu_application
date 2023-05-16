@@ -8,6 +8,9 @@
 
     <!--    Constance-->
     <string name="menu">MENU</string>
+    <string name="reviews">REVIEWS</string>
+    <string name="gallery">GALLERY</string>
+    <string name="cart">CART</string>
     <string name="res_btn_menu">Menu</string>
     <string name="res_btn_reviews">Reviews</string>
     <string name="res_btn_images">Images</string>
@@ -31,5 +34,8 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_cart">CartActivity</string>
 
+<!--    Cart Activity    -->
+    <string name="order_now">ORDER NOW</string>
 </resources>

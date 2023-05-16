@@ -35,7 +35,7 @@
                     android:layout_gravity="center_horizontal"
                     android:background="@color/background_color_0"
                     android:paddingBottom="4dp"
-                    android:text="@string/reviews"
+                    android:text="@string/gallery"
                     android:textColor="@color/text_color_0"
                     android:textSize="@dimen/textTitleSize"
                     android:textStyle="bold" />
@@ -46,12 +46,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                android:layout_marginHorizontal="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_menu"
-                tools:listitem="@layout/restaurant_review_item_layout" />
+                tools:listitem="@layout/restaurant_resource_item_layout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/resource_btn_add"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="12dp"
+            android:background="@drawable/j_btn_circle_50dp"
+            android:src="@drawable/ic_add"
+            android:backgroundTint="@color/primary_color"
+            android:scaleType="fitCenter"
+            android:padding="4dp"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

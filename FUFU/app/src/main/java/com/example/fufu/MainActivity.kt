@@ -11,6 +11,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.fufu.asset.Helper
 import com.example.fufu.databinding.ActivityMainBinding
 import com.example.fufu.ui.shop_component.RestaurantActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -71,12 +72,12 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        bottomNavigationView.setOnNavigationItemReselectedListener {
-        }
+        bottomNavigationView.setOnNavigationItemReselectedListener {  }
 
-//        //SharedPreferences
-//        val sharedPref = getSharedPreferences("currentUser", MODE_PRIVATE)
-//        sharedPref.edit().putString("userId", "1").apply()
-//        sharedPref.edit().putString("userRole", "1").apply()
+        //SharedPreferences
+        val sharedPref = getSharedPreferences("currentUser", MODE_PRIVATE)
+        sharedPref.edit().putString("userId", "1").apply()
+        sharedPref.edit().putString("userRole", "1").apply()
+        sharedPref.edit().putString("resId", "1").apply()
     }
 }
