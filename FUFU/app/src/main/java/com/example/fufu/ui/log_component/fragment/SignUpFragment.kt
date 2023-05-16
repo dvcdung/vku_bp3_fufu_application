@@ -22,11 +22,13 @@ class SignUpFragment : Fragment() {
 
     private lateinit var edtEmail: EditText
     private lateinit var edtPhone: EditText
+    private lateinit var edtName: EditText
     private lateinit var edtPass: EditText
     private lateinit var btnSignUp: Button
 
     private lateinit var email: String
     private lateinit var phone: String
+    private lateinit var name: String
     private lateinit var pass: String
 
     private lateinit var tvError: TextView
@@ -38,19 +40,25 @@ class SignUpFragment : Fragment() {
         btnSignUp.setOnClickListener {
             email = edtEmail.text.toString()
             phone = edtPhone.text.toString()
+            name = edtName.text.toString()
             pass = edtPass.text.toString()
             progressBar.visibility = View.VISIBLE
             tvError.visibility = View.GONE
             val queue: RequestQueue = Volley.newRequestQueue(context)
-            val url = "http://192.168.1.8/fufuAPI/signUp.php"
+            val url = "http://192.168.1.131:80/fufuAPI/signUp.php"
             val stringRequest = object : StringRequest(Method.POST, url,
                 Response.Listener<String> { response ->
                     progressBar.visibility = View.GONE
                     if (response.equals("success")) {
-                        Toast.makeText(context, "You have successfully registered!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Bạn đã đăng ký thành công!", Toast.LENGTH_SHORT).show()
                         edtEmail.setText("")
                         edtPhone.setText("")
+                        edtName.setText("")
                         edtPass.setText("")
+                    } else if (response.equals("not")) {
+                        Toast.makeText(context, "Mật khẩu phải có độ dài hơn 5 ký tự", Toast.LENGTH_SHORT).show()
+                    } else if (response.equals("exist")) {
+                        Toast.makeText(context, "Số điện thoại này đã tồn tại", Toast.LENGTH_SHORT).show()
                     } else {
                         tvError.text = response
                         tvError.visibility = View.VISIBLE
@@ -63,8 +71,9 @@ class SignUpFragment : Fragment() {
                 }) {
                 override fun getParams(): Map<String, String> {
                     val params: MutableMap<String, String> = HashMap()
-                    params["email"] = email
                     params["phone"] = phone
+                    params["email"] = email
+                    params["name"] = name
                     params["pass"] = pass
                     return params
                 }
@@ -76,6 +85,7 @@ class SignUpFragment : Fragment() {
     private fun initView() {
         edtEmail = view?.findViewById(R.id.edtEmail)!!
         edtPhone = view?.findViewById(R.id.edtPhone)!!
+        edtName = view?.findViewById(R.id.edtName)!!
         edtPass = view?.findViewById(R.id.edtPass)!!
         btnSignUp = view?.findViewById(R.id.btnSignUp)!!
         tvError = view?.findViewById(R.id.tvError)!!

@@ -18,7 +18,7 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayoutOrders"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +27,8 @@
             app:tabIndicatorColor="@null"
             app:tabIndicatorGravity="stretch"
             app:tabMode="scrollable"
+            app:tabTextColor="@color/black"
+            android:background="@color/grey_200"
             app:tabSelectedTextColor="@color/cyan_A500"/>
 
         <androidx.viewpager2.widget.ViewPager2

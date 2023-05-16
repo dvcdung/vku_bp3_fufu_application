@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fufu.MainActivity
+import com.example.fufu.R
+import com.example.fufu.data.model.FoodOrders
 import com.example.fufu.data.model.FoodSearchModel
 import com.example.fufu.data.model.HomeFood
 import com.example.fufu.data.network.food.ClickItemFoodListener
@@ -36,11 +38,18 @@ class SearchFoodActivity : AppCompatActivity() {
         binding = ActivitySearchFoodBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        foodSearch = getListFoodOrders()
+        foodSearchAdapter = FoodSearchAdapter(foodSearch!!, object : ClickItemFoodListener{
+            override fun onClickItemFood(food: FoodSearchModel) {
+                onClickItem(food)
+            }
+        })
+        binding.rcView.adapter = foodSearchAdapter
         binding.rcView.layoutManager = LinearLayoutManager(this)
         binding.foodSuggest.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        callApi()
-        callApiFoodSuggest()
+        //callApi()
+        //callApiFoodSuggest()
 
         //binding.middleView.visibility = View.GONE
         //binding.bottomView.visibility = View.VISIBLE
@@ -71,6 +80,32 @@ class SearchFoodActivity : AppCompatActivity() {
 
     }
 
+    private fun getListFoodOrders(): List<FoodSearchModel> {
+        val listFood: ArrayList<FoodSearchModel> = ArrayList()
+        listFood.add(
+            FoodSearchModel(
+                1, R.drawable.food_test, "BunBoHueHue",
+            2, "Thang Bom", "ngon", 40000)
+        )
+        listFood.add(
+            FoodSearchModel(
+                1, R.drawable.food_test, "BunBoHueHue",
+                2, "Thang Bom", "ngon", 40000)
+        )
+        listFood.add(
+            FoodSearchModel(
+                1, R.drawable.food_test, "BunBoHueHue",
+                2, "Thang Bom", "ngon", 40000)
+        )
+        listFood.add(
+            FoodSearchModel(
+                1, R.drawable.food_test, "BunBoHueHue",
+                2, "Thang Bom", "ngon", 40000)
+        )
+
+        return listFood
+    }
+
     private fun filterFood(keyWord: String?){
         if (keyWord != null) {
             binding.middleView.visibility = View.VISIBLE
@@ -91,6 +126,7 @@ class SearchFoodActivity : AppCompatActivity() {
         }
     }
 
+    // food đề xuất
     private fun callApiFoodSuggest() {
         HomeFoodApi.homeFoodApi.getDataFood().enqueue(object : Callback<List<HomeFood>>{
             override fun onResponse(

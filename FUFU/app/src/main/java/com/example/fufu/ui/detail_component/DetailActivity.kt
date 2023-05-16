@@ -1,12 +1,15 @@
 package com.example.fufu.ui.detail_component
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.fufu.R
+import com.example.fufu.asset.Helper
 import com.example.fufu.data.model.FoodSearchModel
 import com.example.fufu.databinding.ActivityDetailBinding
+import com.example.fufu.ui.shop_component.RestaurantActivity
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
@@ -24,9 +27,17 @@ class DetailActivity : AppCompatActivity() {
             binding.itemDesDetail.text = foodSearch.itemDes
             binding.itemPriceDetail.text = foodSearch.itemPrice.toString()
             Glide.with(this)
-                .load("http://192.168.1.122/fufuAPI/images/" + foodSearch.itemImg).into(binding.itemImgDetail)
+                .load("http://192.168.1.131:80/fufuAPI/images/" + foodSearch.itemImg).into(binding.itemImgDetail)
         } else {
-            Toast.makeText(this, "m cut", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.btnOrder.setOnClickListener {
+            val i = Intent(this, RestaurantActivity::class.java)
+            i.putExtra("userId", Helper().getCurrentUser(applicationContext))
+            i.putExtra("resId", foodSearch.resId)
+            startActivity(i)
+            finish()
         }
     }
 }

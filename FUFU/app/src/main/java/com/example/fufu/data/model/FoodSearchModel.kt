@@ -1,8 +1,10 @@
 package com.example.fufu.data.model
 
 data class FoodSearchModel(
-    val itemImg: String,
+    val itemId: Int,
+    val itemImg: Int,
     val itemName: String,
+    val resId: Int,
     val resName: String,
     val itemDes: String,
     val itemPrice: Int) : java.io.Serializable {

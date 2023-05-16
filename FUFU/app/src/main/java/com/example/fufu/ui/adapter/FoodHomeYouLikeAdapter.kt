@@ -27,7 +27,7 @@ class FoodHomeYouLikeAdapter(val foodHomeLikeList: List<FoodCanYouLike>)
 
     override fun onBindViewHolder(holder: FoodHomeListViewHolder, position: Int) {
         val homeFoodYouLike: FoodCanYouLike = foodHomeLikeList[position]
-        Glide.with(holder.foodName.context).load("http://192.168.1.8/fufuAPI/images/" + homeFoodYouLike.itemImg).into(holder.foodImg)
+        Glide.with(holder.foodName.context).load("http://192.168.1.131:80/fufuAPI/images/" + homeFoodYouLike.itemImg).into(holder.foodImg)
         holder.foodName.text = homeFoodYouLike.itemName
         holder.foodPrice.text = homeFoodYouLike.itemPrice.toString()
     }

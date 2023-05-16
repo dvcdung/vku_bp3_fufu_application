@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.fufu.databinding.ActivityMainBinding
+import com.example.fufu.ui.info_component.InfoActivity
 import com.example.fufu.ui.search_component.SearchFoodActivity
 import com.example.fufu.ui.shop_component.RestaurantActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemReselectedListener {
         }
 
-        startActivity(Intent(this, RestaurantActivity::class.java))
+//        startActivity(Intent(this, RestaurantActivity::class.java))
 
         //search item food
         binding.topApp.searchBar.setOnSearchClickListener {
@@ -87,7 +88,8 @@ class MainActivity : AppCompatActivity() {
 
         //btn go to ui user
         binding.topApp.btnAvatar.setOnClickListener {
-            Toast.makeText(this, "i cu i cu", Toast.LENGTH_SHORT).show()
+            val i = Intent(this, InfoActivity::class.java)
+            startActivity(i)
         }
         //SharedPreferences
         val sharedPref = getSharedPreferences("currentUser", MODE_PRIVATE)

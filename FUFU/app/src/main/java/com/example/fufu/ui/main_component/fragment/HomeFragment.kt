@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
 
         rcView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        rcViewYouLike.layoutManager = GridLayoutManager(context, 2)
+        rcViewYouLike.layoutManager = GridLayoutManager(context, 3)
 
         callApi()
         callApiYouLike()

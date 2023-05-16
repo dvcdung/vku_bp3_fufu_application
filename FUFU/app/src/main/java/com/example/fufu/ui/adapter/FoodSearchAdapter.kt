@@ -20,8 +20,10 @@ class FoodSearchAdapter(var foodSearchList: List<FoodSearchModel>, var itemListe
     : RecyclerView.Adapter<FoodSearchAdapter.FoodViewHolder>(){
 
     class FoodViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val foodId: TextView = view.findViewById(R.id.item_id)
         val foodImg: ImageView = view.findViewById(R.id.img_food)
         val foodName: TextView = view.findViewById(R.id.item_name)
+        val foodResId: TextView = view.findViewById(R.id.res_id)
         val foodRes: TextView = view.findViewById(R.id.item_res)
         val foodDes: TextView = view.findViewById(R.id.item_des)
         val foodPrice: TextView = view.findViewById(R.id.item_price)
@@ -35,8 +37,10 @@ class FoodSearchAdapter(var foodSearchList: List<FoodSearchModel>, var itemListe
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         val foodSearch: FoodSearchModel = foodSearchList[position]
-        Glide.with(holder.foodName.context).load("http://192.168.1.8/fufuAPI/images/" + foodSearch.itemImg).into(holder.foodImg)
+        holder.foodId.text = foodSearch.itemId.toString()
+        //Glide.with(holder.foodName.context).load("http://192.168.1.131:80/fufuAPI/images/" + foodSearch.itemImg).into(holder.foodImg)
         holder.foodName.text = foodSearch.itemName
+        holder.foodResId.text = foodSearch.resId.toString()
         holder.foodRes.text = foodSearch.resName
         holder.foodDes.text = foodSearch.itemDes
         holder.foodPrice.text = foodSearch.itemPrice.toString()

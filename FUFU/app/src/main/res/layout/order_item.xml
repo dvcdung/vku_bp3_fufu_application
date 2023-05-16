@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
+    android:padding="10dp"
+    android:background="@drawable/component_background"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -12,8 +14,8 @@
 
         <ImageView
             android:id="@+id/imgFoodOrder"
-            android:layout_width="170dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
             android:scaleType="fitXY"
             android:src="@drawable/food_test"/>
 
@@ -28,29 +30,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bún Bò Huế"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/foodResOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quán: Thằng Bờm"
-                android:textSize="16dp" />
+                android:textSize="14dp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/foodAmountOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Số lượng: 2"
-                android:textSize="16dp"/>
+                android:textSize="14dp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/foodTotalPriceOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tổng tiền: 40.000đ"
-                android:textSize="16dp"/>
+                android:textSize="14dp"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
