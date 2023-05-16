@@ -6,7 +6,7 @@ const RestaurantModel = () => {
     restarantModel.getRestaurant = async (userId) => {
         let restaurantList = [];
         restaurantList = await new Promise((resolve, reject) => {
-            let sql = "SELECT R.resName,R.resAvt,R.resAddress,R.resLatitude,R.resLongitude,R.resPhone,R.resDescription,R.resDescription,R.resOpenTime,R.resSeat,R.createdAt,R.updatedAt,R.userId,COALESCE(AVG(V.revPoint), 0) as revAvg, COUNT(V.reviewId) as revAmount FROM restaurant R LEFT JOIN review V ON R.resId = V.resId WHERE R.resId=? GROUP BY R.resName,R.resAvt,R.resAddress,R.resLatitude,R.resLongitude,R.resPhone,R.resDescription,R.resDescription,R.resOpenTime,R.resSeat,R.createdAt,R.updatedAt,R.userId;";
+            let sql = "SELECT R.resId,R.resName,R.resAvt,R.resAddress,R.resLatitude,R.resLongitude,R.resPhone,R.resDescription,R.resDescription,R.resOpenTime,R.resSeat,R.createdAt,R.updatedAt,R.userId,COALESCE(AVG(V.revPoint), 0) as revAvg, COUNT(V.reviewId) as revAmount FROM restaurant R LEFT JOIN review V ON R.resId = V.resId WHERE R.userId=? GROUP BY R.resId,R.resName,R.resAvt,R.resAddress,R.resLatitude,R.resLongitude,R.resPhone,R.resDescription,R.resDescription,R.resOpenTime,R.resSeat,R.createdAt,R.updatedAt,R.userId;";
             db.query(
                 sql,
                 [userId],

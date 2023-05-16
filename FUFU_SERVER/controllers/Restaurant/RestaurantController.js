@@ -5,7 +5,7 @@ const restaurantController = () => {
 
     resController.index = async (req, res) => {
         res.status(200);
-        res.send(await restaurantModel().getRestaurant(req.params.resId));
+        res.send(await restaurantModel().getRestaurant(req.params.userId));
     }
 
     return resController;
