@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.fufu.R
 import com.example.fufu.asset.Helper
 import com.example.fufu.data.model.FoodSearchModel
+import com.example.fufu.data.model.HomeFood
 import com.example.fufu.databinding.ActivityDetailBinding
 import com.example.fufu.ui.shop_component.RestaurantActivity
 
@@ -28,6 +29,18 @@ class DetailActivity : AppCompatActivity() {
             binding.itemPriceDetail.text = foodSearch.itemPrice.toString()
             Glide.with(this)
                 .load("http://192.168.1.131:80/fufuAPI/images/" + foodSearch.itemImg).into(binding.itemImgDetail)
+        } else {
+            Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
+        }
+
+        val foodHome: HomeFood = bundle.get("foodSearch") as HomeFood
+        if (foodHome != null) {
+            binding.itemNameDetail.text = foodHome.itemName
+            binding.itemResDetail.text = foodHome.resName
+            binding.itemDesDetail.text = foodHome.itemDes
+            binding.itemPriceDetail.text = foodHome.itemPrice.toString()
+            Glide.with(this)
+                .load("http://192.168.1.131:80/fufuAPI/images/" + foodHome.itemImg).into(binding.itemImgDetail)
         } else {
             Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
         }
