@@ -1,10 +1,12 @@
 package com.example.fufu.ui.cart_component
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.example.fufu.MainActivity
 import com.example.fufu.asset.Helper
 import com.example.fufu.data.model.CartItem
 import com.example.fufu.databinding.ActivityCartBinding
@@ -30,7 +32,7 @@ class CartActivity : AppCompatActivity() {
 
         cartItemAdapter = CartItemAdapter(emptyList())
         cartViewModel.getCart(applicationContext)
-        cartBinding.totalPrice.text = "Total amount: "+ "0.0" +" đ"
+        cartBinding.totalPrice.text = "Total amount: "+ calculateTotalAmount(cartViewModel.cartLiveData.value ?: emptyList()).toString() +" đ"
 
         cartViewModel.cartLiveData.observe(this) { cart ->
             cartItemAdapter = CartItemAdapter(cart)
@@ -66,6 +68,12 @@ class CartActivity : AppCompatActivity() {
                     cartViewModel.getCart(applicationContext)
                 }
             }
+        }
+
+        cartBinding.btnOrder.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("to", "3")
+            startActivity(intent)
         }
 
     }
