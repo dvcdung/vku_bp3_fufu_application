@@ -4,5 +4,5 @@ class HomeFood(
     val itemImg: String,
     val itemName: String,
     val itemPrice: Int
-) {
+) : java.io.Serializable {
 }

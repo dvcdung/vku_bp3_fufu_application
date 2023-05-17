@@ -23,7 +23,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.widget.ImageButton
 import com.example.fufu.asset.Helper
+import com.example.fufu.data.network.food.ClickItemFoodCan
+import com.example.fufu.data.network.food.ClickItemFoodHome
 import com.example.fufu.databinding.FragmentHomeBinding
+import com.example.fufu.ui.detail_component.DetailActivity
 import com.example.fufu.ui.shop_component.RestaurantActivity
 
 class HomeFragment : Fragment() {
@@ -95,7 +98,12 @@ class HomeFragment : Fragment() {
             ) {
                 val foodListYouLike = response.body()
                 if (foodListYouLike != null) {
-                    foodYouLikeAdapter = FoodHomeYouLikeAdapter(foodListYouLike)
+                    foodYouLikeAdapter = FoodHomeYouLikeAdapter(foodListYouLike, object : ClickItemFoodCan {
+                        override fun onClickItemFoodCan(food: FoodCanYouLike) {
+                            onClickItemHome2(food)
+                        }
+
+                    })
                     rcViewYouLike.adapter = foodYouLikeAdapter
                 }
             }
@@ -115,7 +123,12 @@ class HomeFragment : Fragment() {
             ) {
                 val foodList = response.body()
                 if (foodList != null) {
-                    foodAdapter = FoodHomeListAdapter(foodList)
+                    foodAdapter = FoodHomeListAdapter(foodList, object : ClickItemFoodHome {
+                        override fun onClickItemFoodHome(food: HomeFood) {
+                            onClickItemHome(food)
+                        }
+
+                    })
                     rcView.adapter = foodAdapter
                 }
             }
@@ -127,4 +140,19 @@ class HomeFragment : Fragment() {
         })
     }
 
+    private fun onClickItemHome(foodClick: HomeFood) {
+        val i = Intent(context, DetailActivity::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("foodSearch", foodClick)
+        i.putExtras(bundle)
+        startActivity(i)
+    }
+
+    private fun onClickItemHome2(foodClick: FoodCanYouLike) {
+        val i = Intent(context, DetailActivity::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("foodSearch", foodClick)
+        i.putExtras(bundle)
+        startActivity(i)
+    }
 }

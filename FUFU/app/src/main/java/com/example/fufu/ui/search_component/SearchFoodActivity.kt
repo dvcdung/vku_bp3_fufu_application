@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fufu.MainActivity
 import com.example.fufu.data.model.FoodSearchModel
 import com.example.fufu.data.model.HomeFood
+import com.example.fufu.data.network.food.ClickItemFoodHome
 import com.example.fufu.data.network.food.ClickItemFoodListener
 import com.example.fufu.data.network.food.HomeFoodApi
 import com.example.fufu.data.network.food.SearchFoodApi
@@ -100,7 +101,11 @@ class SearchFoodActivity : AppCompatActivity() {
             ) {
                 val foodList = response.body()
                 if (foodList != null) {
-                    foodSuggestAdapter = FoodHomeListAdapter(foodList)
+                    foodSuggestAdapter = FoodHomeListAdapter(foodList, object : ClickItemFoodHome {
+                        override fun onClickItemFoodHome(food: HomeFood) {
+                            onClickItemHome(food)
+                        }
+                    })
                     binding.foodSuggest.adapter = foodSuggestAdapter
                 }
             }
@@ -137,6 +142,14 @@ class SearchFoodActivity : AppCompatActivity() {
     }
 
     private fun onClickItem(foodClick: FoodSearchModel) {
+        val i = Intent(this, DetailActivity::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("foodSearch", foodClick)
+        i.putExtras(bundle)
+        startActivity(i)
+    }
+
+    private fun onClickItemHome(foodClick: HomeFood) {
         val i = Intent(this, DetailActivity::class.java)
         val bundle = Bundle()
         bundle.putSerializable("foodSearch", foodClick)
