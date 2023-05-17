@@ -59,6 +59,46 @@
                     android:textSize="@dimen/textDetail"
                     android:textColor="@color/text_color_2"/>
 
+                <TextView
+                    android:id="@+id/item_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12312312123"
+                    android:drawablePadding="6dp"
+                    android:textSize="@dimen/textDetail"
+                    android:visibility="gone"
+                    android:textColor="@color/text_color_2"/>
+
+                <TextView
+                    android:id="@+id/item_resName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12312312123"
+                    android:drawablePadding="6dp"
+                    android:textSize="@dimen/textDetail"
+                    android:visibility="gone"
+                    android:textColor="@color/text_color_2"/>
+
+                <TextView
+                    android:id="@+id/food_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12312312123"
+                    android:drawablePadding="6dp"
+                    android:textSize="@dimen/textDetail"
+                    android:visibility="gone"
+                    android:textColor="@color/text_color_2"/>
+
+                <TextView
+                    android:id="@+id/res_id_round"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12312312123"
+                    android:drawablePadding="6dp"
+                    android:textSize="@dimen/textDetail"
+                    android:visibility="gone"
+                    android:textColor="@color/text_color_2"/>
+
             </LinearLayout>
 
         </LinearLayout>
