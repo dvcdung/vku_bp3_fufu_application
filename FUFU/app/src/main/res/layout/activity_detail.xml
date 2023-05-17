@@ -65,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="Thang Bom"
+                android:textColor="@color/text_color_2"
                 android:textSize="16dp" />
 
         </LinearLayout>
@@ -100,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="Thang Bom"
+                android:textColor="@color/text_color_2"
                 android:textSize="16dp" />
 
         </LinearLayout>
@@ -128,6 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
+            android:textColor="@color/text_color_2"
             android:paddingEnd="10dp"
             android:text="Theo Phó chủ tịch Tổng LĐLĐ Việt Nam, đây là hoạt động
             có ý nghĩa vô cùng quan trọng, khuyến khích đoàn viên, công

@@ -19,9 +19,13 @@ class FoodHomeListAdapter(var foodHomeList: List<HomeFood>, var itemListener: Cl
     : RecyclerView.Adapter<FoodHomeListAdapter.FoodHomeListViewHolder>(){
 
     class FoodHomeListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val foodId: TextView = view.findViewById(R.id.food_id)
         val foodImg: ImageView = view.findViewById(R.id.img_food_around_you)
         val foodName: TextView = view.findViewById(R.id.item_name_around_you)
         val foodPrice: TextView = view.findViewById(R.id.item_price_around_you)
+        val foodResId: TextView = view.findViewById(R.id.res_id_round)
+        val foodDes: TextView = view.findViewById(R.id.item_des)
+        val foodResName: TextView = view.findViewById(R.id.item_resName)
         val itemClick: MaterialCardView = view.findViewById(R.id.layoutClick2)
     }
 
@@ -33,9 +37,12 @@ class FoodHomeListAdapter(var foodHomeList: List<HomeFood>, var itemListener: Cl
     override fun onBindViewHolder(holder: FoodHomeListViewHolder, position: Int) {
         val homeFood: HomeFood = foodHomeList[position]
         Glide.with(holder.foodName.context).load(homeFood.itemImg).into(holder.foodImg)
+        holder.foodId.text = homeFood.itemId.toString()
+        holder.foodResId.text = homeFood.resId.toString()
         holder.foodName.text = homeFood.itemName
         holder.foodPrice.text = homeFood.itemPrice.toString()
-
+        holder.foodDes.text = homeFood.itemDes
+        holder.foodResName.text = homeFood.resName
         holder.itemClick.setOnClickListener {
             itemListener.onClickItemFoodHome(homeFood)
         }

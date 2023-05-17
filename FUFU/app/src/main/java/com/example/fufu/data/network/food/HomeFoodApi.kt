@@ -17,7 +17,7 @@ interface HomeFoodApi {
         val homeFoodYouLikeApi: HomeFoodApi = retrofit.create(HomeFoodApi::class.java)
     }
 
-    @GET("itemAPI.php")
+    @GET("searchItemAPI.php")
     fun getDataFood() : Call<List<HomeFood>>
 
     @GET("itemAPI.php")
