@@ -38,7 +38,7 @@ class FoodSearchAdapter(var foodSearchList: List<FoodSearchModel>, var itemListe
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         val foodSearch: FoodSearchModel = foodSearchList[position]
         holder.foodId.text = foodSearch.itemId.toString()
-        Glide.with(holder.foodName.context).load("http://192.168.1.131:80/fufuAPI/images/" + foodSearch.itemImg).into(holder.foodImg)
+        Glide.with(holder.foodName.context).load(foodSearch.itemImg).into(holder.foodImg)
         holder.foodName.text = foodSearch.itemName
         holder.foodResId.text = foodSearch.resId.toString()
         holder.foodRes.text = foodSearch.resName

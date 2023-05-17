@@ -33,11 +33,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_marginTop="4dp"
                     android:id="@+id/item_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="12312312123"
-                    android:textSize="@dimen/textBigTitleSize"
+                    android:textSize="@dimen/textTitleSize"
                     android:textStyle="bold"
                     android:textColor="@color/text_color_1"
                     android:drawableLeft="@drawable/ic_baseline_drive_file_rename_out"/>
@@ -50,7 +51,7 @@
                     android:textColor="@color/text_color_2"
                     android:drawableLeft="@drawable/ic_baseline_restaurant_24"
                     android:drawablePadding="6dp"
-                    android:textSize="@dimen/textTitleSize"/>
+                    android:textSize="@dimen/textSize"/>
 
                 <TextView
                     android:id="@+id/item_price"
@@ -60,7 +61,7 @@
                     android:textColor="@color/text_color_2"
                     android:drawableLeft="@drawable/ic_baseline_money_24"
                     android:drawablePadding="6dp"
-                    android:textSize="@dimen/textTitleSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:id="@+id/item_des"
