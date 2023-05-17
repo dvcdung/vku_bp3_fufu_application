@@ -90,10 +90,5 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this, InfoActivity::class.java)
             startActivity(i)
         }
-        //SharedPreferences
-        val sharedPref = getSharedPreferences("currentUser", MODE_PRIVATE)
-        sharedPref.edit().putString("userId", "1").apply()
-        sharedPref.edit().putString("userRole", "1").apply()
-        sharedPref.edit().putString("resId", "1").apply()
     }
 }

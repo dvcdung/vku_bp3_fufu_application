@@ -21,16 +21,12 @@ class DetailActivity : AppCompatActivity() {
 
         val bundle: Bundle = intent.extras!!
         val foodSearch: FoodSearchModel = bundle.get("foodSearch") as FoodSearchModel
-        if (foodSearch != null) {
-            binding.itemNameDetail.text = foodSearch.itemName
-            binding.itemResDetail.text = foodSearch.resName
-            binding.itemDesDetail.text = foodSearch.itemDes
-            binding.itemPriceDetail.text = foodSearch.itemPrice.toString()
-            Glide.with(this)
-                .load("http://192.168.1.131:80/fufuAPI/images/" + foodSearch.itemImg).into(binding.itemImgDetail)
-        } else {
-            Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
-        }
+        binding.itemNameDetail.text = foodSearch.itemName
+        binding.itemResDetail.text = foodSearch.resName
+        binding.itemDesDetail.text = foodSearch.itemDes
+        binding.itemPriceDetail.text = foodSearch.itemPrice.toString()
+        Glide.with(this)
+            .load(foodSearch.itemImg).into(binding.itemImgDetail)
 
         binding.btnOrder.setOnClickListener {
             val i = Intent(this, RestaurantActivity::class.java)
