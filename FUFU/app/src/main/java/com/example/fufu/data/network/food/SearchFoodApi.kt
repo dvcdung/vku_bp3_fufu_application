@@ -1,5 +1,6 @@
 package com.example.fufu.data.network.food
 
+import com.example.fufu.asset.Helper
 import com.example.fufu.data.model.FoodSearchModel
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -8,7 +9,7 @@ import retrofit2.http.GET
 
 interface SearchFoodApi {
     companion object {
-        val retrofit: Retrofit = Retrofit.Builder().baseUrl("http://192.168.61.94:80/fufuAPI/")
+        val retrofit: Retrofit = Retrofit.Builder().baseUrl("http://${ Helper().host }/fufuAPI/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

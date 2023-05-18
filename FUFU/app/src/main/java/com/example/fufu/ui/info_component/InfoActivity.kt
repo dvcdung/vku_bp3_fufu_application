@@ -9,6 +9,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.fufu.asset.Helper
 import com.example.fufu.databinding.ActivityInfoBinding
 import com.example.fufu.ui.log_component.SignInSignUpActivity
 import org.json.JSONObject
@@ -41,7 +42,7 @@ class InfoActivity : AppCompatActivity() {
 
         binding.btnLogOut.setOnClickListener {
             val queue: RequestQueue = Volley.newRequestQueue(applicationContext)
-            val url = "http://192.168.1.132:80/fufuAPI/logOut.php"
+            val url = "http://${ Helper().host }/fufuAPI/logOut.php"
             val stringRequest = object : StringRequest(
                 Method.POST, url,
                 Response.Listener<String> { response ->
@@ -57,6 +58,11 @@ class InfoActivity : AppCompatActivity() {
                         editor.putString("bio", "")
                         editor.putString("userStatus", "")
                         editor.apply()
+
+                        val sharedPref = this.getSharedPreferences("currentUser", MODE_PRIVATE)
+                        sharedPref.edit().putString("userId", "null").apply()
+                        sharedPref.edit().putString("userRole", "null").apply()
+                        sharedPref.edit().putString("resId", "null").apply()
                         val i = Intent(applicationContext, SignInSignUpActivity::class.java)
                         startActivity(i)
                     } else {

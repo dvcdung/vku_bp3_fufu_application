@@ -17,6 +17,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.fufu.R
+import com.example.fufu.asset.Helper
 
 class SignUpFragment : Fragment() {
 
@@ -45,7 +46,7 @@ class SignUpFragment : Fragment() {
             progressBar.visibility = View.VISIBLE
             tvError.visibility = View.GONE
             val queue: RequestQueue = Volley.newRequestQueue(context)
-            val url = "http://192.168.61.94:80/fufuAPI/signUp.php"
+            val url = "http://${ Helper().host }/fufuAPI/signUp.php"
             val stringRequest = object : StringRequest(Method.POST, url,
                 Response.Listener<String> { response ->
                     progressBar.visibility = View.GONE

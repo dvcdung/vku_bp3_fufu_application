@@ -93,9 +93,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         //SharedPreferences
-        val sharedPref = this.getSharedPreferences("currentUser", MODE_PRIVATE)
-        sharedPref.edit().putString("userId", "1").apply()
-        sharedPref.edit().putString("userRole", "1").apply()
-        sharedPref.edit().putString("resId", "1").apply()
+//        val sharedPref = this.getSharedPreferences("currentUser", MODE_PRIVATE)
+//        sharedPref.edit().putString("userId", "1").apply()
+//        sharedPref.edit().putString("userRole", "1").apply()
+//        sharedPref.edit().putString("resId", "1").apply()
     }
 }
