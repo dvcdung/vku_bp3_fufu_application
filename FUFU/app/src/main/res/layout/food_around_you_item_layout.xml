@@ -60,7 +60,7 @@
                     android:textColor="@color/text_color_2"/>
 
                 <TextView
-                    android:id="@+id/item_des"
+                    android:id="@+id/item_id_around_you"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="12312312123"
@@ -70,7 +70,7 @@
                     android:textColor="@color/text_color_2"/>
 
                 <TextView
-                    android:id="@+id/item_resName"
+                    android:id="@+id/res_id_around_you"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="12312312123"
@@ -80,7 +80,7 @@
                     android:textColor="@color/text_color_2"/>
 
                 <TextView
-                    android:id="@+id/food_id"
+                    android:id="@+id/item_des_around_you"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="12312312123"
@@ -90,7 +90,7 @@
                     android:textColor="@color/text_color_2"/>
 
                 <TextView
-                    android:id="@+id/res_id_round"
+                    android:id="@+id/res_name_around_you"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="12312312123"

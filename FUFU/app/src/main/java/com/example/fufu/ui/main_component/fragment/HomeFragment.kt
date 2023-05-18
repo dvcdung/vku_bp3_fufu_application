@@ -1,7 +1,6 @@
 package com.example.fufu.ui.main_component.fragment
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,8 +22,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.widget.ImageButton
 import com.example.fufu.asset.Helper
-import com.example.fufu.data.network.food.ClickItemFoodCan
-import com.example.fufu.data.network.food.ClickItemFoodHome
+import com.example.fufu.data.model.FoodSearchModel
+import com.example.fufu.data.network.food.ClickItemFoodListener
 import com.example.fufu.databinding.FragmentHomeBinding
 import com.example.fufu.ui.detail_component.DetailActivity
 import com.example.fufu.ui.shop_component.RestaurantActivity
@@ -77,7 +76,7 @@ class HomeFragment : Fragment() {
 
         rcViewYouLike.layoutManager = GridLayoutManager(context, 3)
 
-        callApi()
+        callApiFoodAround()
         callApiYouLike()
 
         btnShop.setOnClickListener {
@@ -98,9 +97,17 @@ class HomeFragment : Fragment() {
             ) {
                 val foodListYouLike = response.body()
                 if (foodListYouLike != null) {
-                    foodYouLikeAdapter = FoodHomeYouLikeAdapter(foodListYouLike, object : ClickItemFoodCan {
-                        override fun onClickItemFoodCan(food: FoodCanYouLike) {
-                            onClickItemHome2(food)
+                    foodYouLikeAdapter = FoodHomeYouLikeAdapter(foodListYouLike, object : ClickItemFoodListener {
+                        override fun onClickItemFood(food: FoodSearchModel) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onClickItemFoodAround(food: HomeFood) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onClickItemFoodCanLike(food: FoodCanYouLike) {
+                            onClickItemFoodLike(food)
                         }
 
                     })
@@ -115,7 +122,7 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun callApi() {
+    private fun callApiFoodAround() {
         HomeFoodApi.homeFoodApi.getDataFood().enqueue(object : Callback<List<HomeFood>>{
             override fun onResponse(
                 call: Call<List<HomeFood>>,
@@ -123,9 +130,17 @@ class HomeFragment : Fragment() {
             ) {
                 val foodList = response.body()
                 if (foodList != null) {
-                    foodAdapter = FoodHomeListAdapter(foodList, object : ClickItemFoodHome {
-                        override fun onClickItemFoodHome(food: HomeFood) {
-                            onClickItemHome(food)
+                    foodAdapter = FoodHomeListAdapter(foodList, object : ClickItemFoodListener {
+                        override fun onClickItemFood(food: FoodSearchModel) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onClickItemFoodAround(food: HomeFood) {
+                            onClickItemFoodAroundYou(food)
+                        }
+
+                        override fun onClickItemFoodCanLike(food: FoodCanYouLike) {
+                            TODO("Not yet implemented")
                         }
 
                     })
@@ -140,19 +155,21 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun onClickItemHome(foodClick: HomeFood) {
+    private fun onClickItemFoodLike(foodClick: FoodCanYouLike) {
         val i = Intent(context, DetailActivity::class.java)
         val bundle = Bundle()
-        bundle.putSerializable("foodSearch", foodClick)
+        bundle.putSerializable("food", foodClick)
         i.putExtras(bundle)
+        i.putExtra("model", "likeFood")
         startActivity(i)
     }
 
-    private fun onClickItemHome2(foodClick: FoodCanYouLike) {
+    private fun onClickItemFoodAroundYou(foodClick: HomeFood) {
         val i = Intent(context, DetailActivity::class.java)
         val bundle = Bundle()
-        bundle.putSerializable("foodSearch", foodClick)
+        bundle.putSerializable("food", foodClick)
         i.putExtras(bundle)
+        i.putExtra("model", "homeFood")
         startActivity(i)
     }
 }

@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fufu.MainActivity
+import com.example.fufu.data.model.FoodCanYouLike
 import com.example.fufu.data.model.FoodSearchModel
 import com.example.fufu.data.model.HomeFood
-import com.example.fufu.data.network.food.ClickItemFoodHome
 import com.example.fufu.data.network.food.ClickItemFoodListener
 import com.example.fufu.data.network.food.HomeFoodApi
 import com.example.fufu.data.network.food.SearchFoodApi
@@ -101,10 +101,19 @@ class SearchFoodActivity : AppCompatActivity() {
             ) {
                 val foodList = response.body()
                 if (foodList != null) {
-                    foodSuggestAdapter = FoodHomeListAdapter(foodList, object : ClickItemFoodHome {
-                        override fun onClickItemFoodHome(food: HomeFood) {
-                            onClickItemHome(food)
+                    foodSuggestAdapter = FoodHomeListAdapter(foodList, object : ClickItemFoodListener {
+                        override fun onClickItemFood(food: FoodSearchModel) {
+                            TODO("Not yet implemented")
                         }
+
+                        override fun onClickItemFoodAround(food: HomeFood) {
+                            Toast.makeText(applicationContext, food.itemName, Toast.LENGTH_SHORT).show()
+                        }
+
+                        override fun onClickItemFoodCanLike(food: FoodCanYouLike) {
+                            TODO("Not yet implemented")
+                        }
+
                     })
                     binding.foodSuggest.adapter = foodSuggestAdapter
                 }
@@ -129,6 +138,15 @@ class SearchFoodActivity : AppCompatActivity() {
                         override fun onClickItemFood(food: FoodSearchModel) {
                             onClickItem(food)
                         }
+
+                        override fun onClickItemFoodAround(food: HomeFood) {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onClickItemFoodCanLike(food: FoodCanYouLike) {
+                            TODO("Not yet implemented")
+                        }
+
                     })
                     binding.rcView.adapter = foodSearchAdapter
                 }
@@ -144,16 +162,17 @@ class SearchFoodActivity : AppCompatActivity() {
     private fun onClickItem(foodClick: FoodSearchModel) {
         val i = Intent(this, DetailActivity::class.java)
         val bundle = Bundle()
-        bundle.putSerializable("foodSearch", foodClick)
+        bundle.putSerializable("food", foodClick)
         i.putExtras(bundle)
+        i.putExtra("model", "searchFood")
         startActivity(i)
     }
 
-    private fun onClickItemHome(foodClick: HomeFood) {
-        val i = Intent(this, DetailActivity::class.java)
-        val bundle = Bundle()
-        bundle.putSerializable("foodSearch", foodClick)
-        i.putExtras(bundle)
-        startActivity(i)
-    }
+//    private fun onClickItemHome(foodClick: HomeFood) {
+//        val i = Intent(this, DetailActivity::class.java)
+//        val bundle = Bundle()
+//        bundle.putSerializable("foodSearch", foodClick)
+//        i.putExtras(bundle)
+//        startActivity(i)
+//    }
 }

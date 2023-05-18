@@ -20,6 +20,6 @@ interface HomeFoodApi {
     @GET("itemAPI.php")
     fun getDataFood() : Call<List<HomeFood>>
 
-    @GET("itemAPI.php")
+    @GET("searchItemAPI.php")
     fun getDataFoodYouLike() : Call<List<FoodCanYouLike>>
 }
