@@ -1,7 +1,7 @@
 <?php
-//if (!empty($_POST["phone"]) && !empty($_POST["pass"])) {
-    $phone = "0969634430";//$_POST["phone"]; // post email
-    $pass = "123456789";//$_POST["pass"]; // post password
+if (!empty($_POST["phone"]) && !empty($_POST["pass"])) {
+    $phone = $_POST["phone"]; // post email
+    $pass = $_POST["pass"]; // post password
     $rs = array();
     $con = mysqli_connect("localhost", "root", "", "fufu_db");
     if ($con) {
@@ -48,7 +48,7 @@
             } else $rs = array("status" => "failed", "message" => "Email or Password incorrect");
         } else $rs = array("status" => "failed", "message" => "Email or Password incorrect");
     } else $rs = array("status" => "failed", "message" => "Couldn't connect to server");
-//} else $rs = array("status" => "failed", "message" => "All fields are required");
+} else $rs = array("status" => "failed", "message" => "All fields are required");
 
 echo json_encode($rs, JSON_PRETTY_PRINT);
 
