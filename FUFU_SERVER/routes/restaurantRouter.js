@@ -16,6 +16,8 @@ restaurantRouter.post('/menu/item/update', menuController().update);
 
 restaurantRouter.get('/review/me/:resId/:userId', reviewController().getReviewByUserId);
 restaurantRouter.get('/review/:resId/:userId', reviewController().getReviewByResId);
+restaurantRouter.delete('/review/delete/:reviewId', reviewController().deleteReview);
+restaurantRouter.post('/review/insert', reviewController().insertReview);
 
 restaurantRouter.post('/gallery/upload/:resId', fileUploader.single('gallery'), galleryController().uploadFile);
 restaurantRouter.get('/gallery/:resId', galleryController().getResources)

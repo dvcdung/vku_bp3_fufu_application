@@ -19,6 +19,7 @@ const galleryController = () => {
         res.send(await galleryModel().getResources(req.params.resId));
         res.status(200);
     }
+    // galleryControllerObj.dele
     
     return galleryControllerObj;
 }

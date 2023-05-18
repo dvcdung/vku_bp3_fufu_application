@@ -13,6 +13,7 @@ if (!empty($_POST["phone"]) && !empty($_POST["pass"])) {
                 $sqlUpdate = "UPDATE user SET userStatus = 1 WHERE userPhone = '$phone'";
                 if (mysqli_query($con, $sqlUpdate)) {
                     $rs = array("status" => "success", 
+                                "userId" => $row['userId'],
                                 "email" => $row['userEmail'], 
                                 "phone" => $row['userPhone'],
                                 "name" => $row['userFullName'],
@@ -20,6 +21,7 @@ if (!empty($_POST["phone"]) && !empty($_POST["pass"])) {
                                 "gender" => $row['userGender'],
                                 "dob" => $row['userDob'],
                                 "bio" => $row['userBio'],
+                                "userRole" => $row['userRole'],
                                 "userStatus" => $row['userStatus']);
                 } else $rs = array("status" => "failed", "message" => "ko");
             } else $rs = array("status" => "failed", "message" => "Email or Password incorrect");

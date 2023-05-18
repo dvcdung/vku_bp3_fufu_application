@@ -14,7 +14,7 @@ const menuController = () => {
             newItem.itemImg,
             newItem.itemName,
             newItem.itemDes,
-            newItem.itemPrice
+            newItem.itemPricex
         ]);
         res.status(200);
         res.send("Successfully inserted item.");
