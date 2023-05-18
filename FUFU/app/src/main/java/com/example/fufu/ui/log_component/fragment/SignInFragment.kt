@@ -53,7 +53,7 @@ class SignInFragment : Fragment() {
             progressBar.visibility = View.VISIBLE
             tvError.visibility = View.GONE
             val queue: RequestQueue = Volley.newRequestQueue(context)
-            val url = "http://192.168.1.131:80/fufuAPI/signIn.php"
+            val url = "http://192.168.1.3:80/fufuAPI/signIn.php"
             val stringRequest = object : StringRequest(
                 Method.POST, url,
                 Response.Listener<String> { response ->
