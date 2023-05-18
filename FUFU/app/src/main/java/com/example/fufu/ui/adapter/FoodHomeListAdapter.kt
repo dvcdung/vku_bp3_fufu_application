@@ -35,7 +35,7 @@ class FoodHomeListAdapter(var foodHomeList: List<HomeFood>, var itemListener: Cl
         val homeFood: HomeFood = foodHomeList[position]
         holder.foodId.text = homeFood.itemId.toString()
         holder.resId.text = homeFood.resId.toString()
-        Glide.with(holder.foodName.context).load("http://192.168.1.3/fufuAPI/images/" + homeFood.itemImg).into(holder.foodImg)
+        Glide.with(holder.foodName.context).load(homeFood.itemImg).into(holder.foodImg)
         holder.foodName.text = homeFood.itemName
         holder.foodDes.text = homeFood.itemDes
         holder.foodPrice.text = homeFood.itemPrice.toString()

@@ -35,7 +35,7 @@ class FoodHomeYouLikeAdapter(val foodHomeLikeList: List<FoodCanYouLike>, var ite
         val homeFoodYouLike: FoodCanYouLike = foodHomeLikeList[position]
         holder.foodId.text = homeFoodYouLike.itemId.toString()
         holder.resId.text = homeFoodYouLike.resId.toString()
-        Glide.with(holder.foodName.context).load("http://192.168.1.3:80/fufuAPI/images/" + homeFoodYouLike.itemImg).into(holder.foodImg)
+        Glide.with(holder.foodName.context).load(homeFoodYouLike.itemImg).into(holder.foodImg)
         holder.foodName.text = homeFoodYouLike.itemName
         holder.foodDes.text = homeFoodYouLike.itemDes
         holder.foodPrice.text = homeFoodYouLike.itemPrice.toString()

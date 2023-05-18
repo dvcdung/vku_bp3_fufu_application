@@ -34,7 +34,7 @@ class DetailActivity : AppCompatActivity() {
                     binding.itemDesDetail.text = foodSearch.itemDes
                     binding.itemPriceDetail.text = foodSearch.itemPrice.toString()
                     Glide.with(this)
-                        .load("http://192.168.1.3:80/fufuAPI/images/" + foodSearch.itemImg).into(binding.itemImgDetail)
+                        .load(foodSearch.itemImg).into(binding.itemImgDetail)
                 } else {
                     Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
                 }
@@ -47,7 +47,7 @@ class DetailActivity : AppCompatActivity() {
                     binding.itemDesDetail.text = foodHome.itemDes
                     binding.itemPriceDetail.text = foodHome.itemPrice.toString()
                     Glide.with(this)
-                        .load("http://192.168.1.3:80/fufuAPI/images/" + foodHome.itemImg).into(binding.itemImgDetail)
+                        .load(foodHome.itemImg).into(binding.itemImgDetail)
                 } else {
                     Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
                 }
@@ -60,7 +60,7 @@ class DetailActivity : AppCompatActivity() {
                     binding.itemDesDetail.text = foodLike.itemDes
                     binding.itemPriceDetail.text = foodLike.itemPrice.toString()
                     Glide.with(this)
-                        .load("http://192.168.1.3:80/fufuAPI/images/" + foodLike.itemImg).into(binding.itemImgDetail)
+                        .load(foodLike.itemImg).into(binding.itemImgDetail)
                 } else {
                     Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
                 }
