@@ -25,6 +25,7 @@ class SignInFragment : Fragment() {
     private lateinit var edtAccountLog: EditText
     private lateinit var edtPassLog: EditText
 
+    private lateinit var userId: String
     private lateinit var email: String
     private lateinit var pass: String
     private lateinit var phone: String
@@ -33,7 +34,9 @@ class SignInFragment : Fragment() {
     private lateinit var gender: String
     private lateinit var dob: String
     private lateinit var bio: String
+    private lateinit var role: String
     private lateinit var userStatus: String
+    private lateinit var resId: String
 
     private lateinit var tvError: TextView
     private lateinit var progressBar: ProgressBar
@@ -53,7 +56,7 @@ class SignInFragment : Fragment() {
             progressBar.visibility = View.VISIBLE
             tvError.visibility = View.GONE
             val queue: RequestQueue = Volley.newRequestQueue(context)
-            val url = "http://192.168.1.132:80/fufuAPI/signIn.php"
+            val url = "http://192.168.1.3:80/fufuAPI/signIn.php"
             val stringRequest = object : StringRequest(
                 Method.POST, url,
                 Response.Listener<String> { response ->
@@ -61,6 +64,7 @@ class SignInFragment : Fragment() {
                     val jsonObject: JSONObject = JSONObject(response)
                     val status: String = jsonObject.getString("status")
                     if (status == "success") {
+                        userId = jsonObject.getString("userId")
                         email = jsonObject.getString("email")
                         phone = jsonObject.getString("phone")
                         name = jsonObject.getString("name")
@@ -68,18 +72,39 @@ class SignInFragment : Fragment() {
                         gender = jsonObject.getString("gender")
                         dob = jsonObject.getString("dob")
                         bio = jsonObject.getString("bio")
+                        role = jsonObject.getString("role")
                         userStatus = jsonObject.getString("userStatus")
-                        val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
-                        editor.putString("logged", "true")
-                        editor.putString("email", email)
-                        editor.putString("phone", phone)
-                        editor.putString("name", name)
-                        editor.putString("address", address)
-                        editor.putString("gender", gender)
-                        editor.putString("dob", dob)
-                        editor.putString("bio", bio)
-                        editor.putString("userStatus", userStatus)
-                        editor.apply()
+                        if (role == "1") {
+                            resId = jsonObject.getString("resId")
+                            val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
+                            editor.putString("logged", "true")
+                            editor.putString("userId", userId)
+                            editor.putString("email", email)
+                            editor.putString("phone", phone)
+                            editor.putString("name", name)
+                            editor.putString("address", address)
+                            editor.putString("gender", gender)
+                            editor.putString("dob", dob)
+                            editor.putString("bio", bio)
+                            editor.putString("role", role)
+                            editor.putString("resId", resId)
+                            editor.putString("userStatus", userStatus)
+                            editor.apply()
+                        } else if (role == "0") {
+                            val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
+                            editor.putString("logged", "true")
+                            editor.putString("userId", userId)
+                            editor.putString("email", email)
+                            editor.putString("phone", phone)
+                            editor.putString("name", name)
+                            editor.putString("address", address)
+                            editor.putString("gender", gender)
+                            editor.putString("dob", dob)
+                            editor.putString("bio", bio)
+                            editor.putString("role", role)
+                            editor.putString("userStatus", userStatus)
+                            editor.apply()
+                        }
                         val i = Intent(context, MainActivity::class.java)
                         startActivity(i)
                     } else if (status == "failed") {
