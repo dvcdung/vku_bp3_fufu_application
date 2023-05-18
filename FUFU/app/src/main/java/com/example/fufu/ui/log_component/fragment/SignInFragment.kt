@@ -40,8 +40,9 @@ class SignInFragment : Fragment() {
     private lateinit var gender: String
     private lateinit var dob: String
     private lateinit var bio: String
-    private lateinit var userRole: String
+    private lateinit var role: String
     private lateinit var userStatus: String
+    private lateinit var resId: String
 
     private lateinit var tvError: TextView
     private lateinit var progressBar: ProgressBar
@@ -61,7 +62,6 @@ class SignInFragment : Fragment() {
             progressBar.visibility = View.VISIBLE
             tvError.visibility = View.GONE
             val queue: RequestQueue = Volley.newRequestQueue(context)
-
             val url = "http://${ Helper().host }/fufuAPI/signIn.php"
             val stringRequest = object : StringRequest(
                 Method.POST, url,
@@ -78,10 +78,12 @@ class SignInFragment : Fragment() {
                         gender = jsonObject.getString("gender")
                         dob = jsonObject.getString("dob")
                         bio = jsonObject.getString("bio")
-                        userRole = jsonObject.getString("userRole")
+                        role = jsonObject.getString("role")
                         userStatus = jsonObject.getString("userStatus")
+                        //save to sharedPreference
                         val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
                         editor.putString("logged", "true")
+                        editor.putString("userId", userId)
                         editor.putString("email", email)
                         editor.putString("phone", phone)
                         editor.putString("name", name)
@@ -89,19 +91,22 @@ class SignInFragment : Fragment() {
                         editor.putString("gender", gender)
                         editor.putString("dob", dob)
                         editor.putString("bio", bio)
+                        editor.putString("role", role)
                         editor.putString("userStatus", userStatus)
-                        editor.apply()
                         //SharedPreferences
-                        val sharedPref = requireContext().getSharedPreferences("currentUser",
-                            AppCompatActivity.MODE_PRIVATE
-                        )
+                        val sharedPref = requireContext().getSharedPreferences("currentUser", AppCompatActivity.MODE_PRIVATE)
                         sharedPref.edit().putString("userId", userId).apply()
-                        sharedPref.edit().putString("userRole", userRole).apply()
-                        if(userRole != "0") {
-                            sharedPref.edit().putString("resId", getResIdByUserId(userId)).apply()
-                        } else {
-                            sharedPref.edit().putString("resId", "null").apply()
+                        sharedPref.edit().putString("userRole", role).apply()
+                        if (role == "1") {
+                            sharedPref.edit().putString("resId", resId).apply()
+
+                            resId = jsonObject.getString("resId")
+                            editor.putString("resId", resId)
+                        }else {
+                            editor.putString("resId", "")
                         }
+                        editor.apply()
+                        Toast.makeText(requireContext(), sharedPreferences.getString("role", "").toString(), Toast.LENGTH_SHORT).show()
                         val i = Intent(context, MainActivity::class.java)
                         startActivity(i)
                     } else if (status == "failed") {

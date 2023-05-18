@@ -42,13 +42,14 @@ class InfoActivity : AppCompatActivity() {
 
         binding.btnLogOut.setOnClickListener {
             val queue: RequestQueue = Volley.newRequestQueue(applicationContext)
-            val url = "http://${ Helper().host }/fufuAPI/logOut.php"
+            val url = "http://${Helper().host}/fufuAPI/logOut.php"
             val stringRequest = object : StringRequest(
                 Method.POST, url,
                 Response.Listener<String> { response ->
                     if (response.equals("success")) {
                         val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
                         editor.putString("logged", "")
+                        editor.putString("userId", "")
                         editor.putString("phone", "")
                         editor.putString("email", "")
                         editor.putString("name", "")
@@ -56,13 +57,16 @@ class InfoActivity : AppCompatActivity() {
                         editor.putString("gender", "")
                         editor.putString("dob", "")
                         editor.putString("bio", "")
+                        editor.putString("role", "")
                         editor.putString("userStatus", "")
+                        editor.putString("resId", "")
                         editor.apply()
 
                         val sharedPref = this.getSharedPreferences("currentUser", MODE_PRIVATE)
                         sharedPref.edit().putString("userId", "null").apply()
-                        sharedPref.edit().putString("userRole", "null").apply()
+                        sharedPref.edit().putString("userRole", "0").apply()
                         sharedPref.edit().putString("resId", "null").apply()
+
                         val i = Intent(applicationContext, SignInSignUpActivity::class.java)
                         startActivity(i)
                     } else {
