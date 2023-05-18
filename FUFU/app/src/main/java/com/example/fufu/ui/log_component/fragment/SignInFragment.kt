@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -53,7 +54,7 @@ class SignInFragment : Fragment() {
             progressBar.visibility = View.VISIBLE
             tvError.visibility = View.GONE
             val queue: RequestQueue = Volley.newRequestQueue(context)
-            val url = "http://192.168.1.131:80/fufuAPI/signIn.php"
+            val url = "http://192.168.61.94:80/fufuAPI/signIn.php"
             val stringRequest = object : StringRequest(
                 Method.POST, url,
                 Response.Listener<String> { response ->
@@ -80,6 +81,13 @@ class SignInFragment : Fragment() {
                         editor.putString("bio", bio)
                         editor.putString("userStatus", userStatus)
                         editor.apply()
+                        //SharedPreferences
+                        val sharedPref = requireContext().getSharedPreferences("currentUser",
+                            AppCompatActivity.MODE_PRIVATE
+                        )
+                        sharedPref.edit().putString("userId", "1").apply()
+                        sharedPref.edit().putString("userRole", "1").apply()
+                        sharedPref.edit().putString("resId", "1").apply()
                         val i = Intent(context, MainActivity::class.java)
                         startActivity(i)
                     } else if (status == "failed") {

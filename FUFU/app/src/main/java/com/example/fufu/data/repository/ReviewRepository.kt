@@ -16,4 +16,12 @@ class ReviewRepository {
     suspend fun getReviewsByResId(resId: String, userId: String): List<Review> {
         return reviewApi.getReviewsByResId(resId, userId)
     }
+
+    suspend fun deleteReview(reviewId: String) {
+        reviewApi.deleteReview(reviewId)
+    }
+
+    suspend fun insertReview(review: Review) {
+        reviewApi.insertReview(review)
+    }
 }

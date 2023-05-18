@@ -27,4 +27,16 @@ class ReviewsViewModel : ViewModel() {
             reviewListLiveData.value = reviewsList
         }
     }
+
+    fun deleteReview(reviewId: String) {
+        viewModelScope.launch {
+            reviewRepository.deleteReview(reviewId)
+        }
+    }
+
+    fun insertReview(review: Review) {
+         viewModelScope.launch {
+             reviewRepository.insertReview(review)
+         }
+    }
 }

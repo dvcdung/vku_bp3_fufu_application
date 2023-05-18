@@ -2,18 +2,17 @@ package com.example.fufu.ui.cart_component
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.fufu.MainActivity
-import com.example.fufu.asset.Helper
+import com.example.fufu.data.model.BillDetail
 import com.example.fufu.data.model.CartItem
 import com.example.fufu.databinding.ActivityCartBinding
 import com.example.fufu.ui.adapter.CartItemAdapter
 import com.example.fufu.ui.common.action.HeaderLayoutAction
 import com.example.fufu.ui.common.action.ICartAction
-import com.example.fufu.ui.shop_component.viewmodel.RestaurantDetailViewModel
 
 class CartActivity : AppCompatActivity() {
     lateinit var cartBinding: ActivityCartBinding
@@ -71,9 +70,22 @@ class CartActivity : AppCompatActivity() {
         }
 
         cartBinding.btnOrder.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("to", "3")
-            startActivity(intent)
+            val cart = cartViewModel.cartLiveData.value
+            if(cart != null && cart.isNotEmpty()) {
+                var bill: List<BillDetail> = emptyList()
+                for(i in cart.indices) {
+                    bill = bill.plus(BillDetail("null", "null", cart[i].item.itemId, cart[i].amount))
+                }
+                cartViewModel.addBill(this, calculateTotalAmount(cart), bill)
+                cartViewModel.clearCart(this)
+                Toast.makeText(this, "Ordered successfully", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("to", "order")
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Cart empty", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }

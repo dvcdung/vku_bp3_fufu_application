@@ -41,7 +41,7 @@ class InfoActivity : AppCompatActivity() {
 
         binding.btnLogOut.setOnClickListener {
             val queue: RequestQueue = Volley.newRequestQueue(applicationContext)
-            val url = "http://192.168.1.132:80/fufuAPI/logOut.php"
+            val url = "http://192.168.61.94:80/fufuAPI/logOut.php"
             val stringRequest = object : StringRequest(
                 Method.POST, url,
                 Response.Listener<String> { response ->

@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
@@ -90,5 +91,11 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this, InfoActivity::class.java)
             startActivity(i)
         }
+
+        //SharedPreferences
+        val sharedPref = this.getSharedPreferences("currentUser", MODE_PRIVATE)
+        sharedPref.edit().putString("userId", "1").apply()
+        sharedPref.edit().putString("userRole", "1").apply()
+        sharedPref.edit().putString("resId", "1").apply()
     }
 }

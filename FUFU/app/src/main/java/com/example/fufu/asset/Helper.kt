@@ -65,4 +65,8 @@ class Helper {
         val type = object : TypeToken<List<CartItem>>() {}.type
         return gson.fromJson(sharePref.getString("cart", null), type)
     }
+    fun clearCart(context: Context) {
+        sharePref = context.getSharedPreferences("myCart", AppCompatActivity.MODE_PRIVATE)
+        sharePref.edit().clear().apply()
+    }
 }

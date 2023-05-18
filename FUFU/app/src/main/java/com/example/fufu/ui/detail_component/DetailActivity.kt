@@ -29,18 +29,6 @@ class DetailActivity : AppCompatActivity() {
         Glide.with(this)
             .load(foodSearch.itemImg).into(binding.itemImgDetail)
 
-        val foodHome: HomeFood = bundle.get("foodSearch") as HomeFood
-        if (foodHome != null) {
-            binding.itemNameDetail.text = foodHome.itemName
-            binding.itemResDetail.text = foodHome.resName
-            binding.itemDesDetail.text = foodHome.itemDes
-            binding.itemPriceDetail.text = foodHome.itemPrice.toString()
-            Glide.with(this)
-                .load("http://192.168.1.131:80/fufuAPI/images/" + foodHome.itemImg).into(binding.itemImgDetail)
-        } else {
-            Toast.makeText(this, "null", Toast.LENGTH_SHORT).show()
-        }
-
         binding.btnOrder.setOnClickListener {
             val i = Intent(this, RestaurantActivity::class.java)
             i.putExtra("userId", Helper().getCurrentUser(applicationContext))

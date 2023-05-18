@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.get
 import com.example.fufu.R
@@ -19,7 +20,6 @@ import com.example.fufu.ui.shop_component.viewmodel.ReviewsViewModel
 class ReviewsFragment : Fragment() {
     private lateinit var reviewsViewModel: ReviewsViewModel
     private lateinit var reviewsBinding: FragmentReviewsBinding
-    private lateinit var reviewListLiveData: LiveData<List<Review>>
     private lateinit var restaurantReviewItemAdapter: RestaurantReviewItemAdapter
 
     //Variable
@@ -40,20 +40,39 @@ class ReviewsFragment : Fragment() {
         reviewsViewModel = ViewModelProvider(this)[ReviewsViewModel::class.java]
         //binding
         reviewsBinding = FragmentReviewsBinding.inflate(layoutInflater)
-        //livedata
-        reviewListLiveData = reviewsViewModel.reviewListLiveData
         //adapter
-        restaurantReviewItemAdapter = RestaurantReviewItemAdapter(emptyList())
+        restaurantReviewItemAdapter = RestaurantReviewItemAdapter(emptyList(), reviewsViewModel)
         //recyclerview
-        reviewsBinding.rcvRestaurantReviewList.adapter = restaurantReviewItemAdapter
         reviewsViewModel.getReviewList(resId, userId)
-        reviewListLiveData.observe(viewLifecycleOwner) {
+        reviewsBinding.btnSendReview.visibility = View.INVISIBLE
+        reviewsViewModel.reviewListLiveData.observe(viewLifecycleOwner) {
             reviewsList = it
             if(it[0].userId == userId) {
                 myReview = listOf(it[0])
             }
-            restaurantReviewItemAdapter.setReviewList(reviewsList)
-            restaurantReviewItemAdapter.notifyDataSetChanged()
+            restaurantReviewItemAdapter = RestaurantReviewItemAdapter(reviewsList, reviewsViewModel)
+            reviewsBinding.rcvRestaurantReviewList.adapter = restaurantReviewItemAdapter
+
+            if(reviewsList[0].userId != userId) {
+                //my review exist
+                reviewsBinding.myReview.visibility = View.VISIBLE
+                reviewsBinding.reviewPoint.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
+                    if(rating.toInt() > 0) {
+                        reviewsBinding.btnSendReview.visibility = View.VISIBLE
+                        reviewsBinding.btnSendReview.setOnClickListener {
+                            reviewsViewModel.insertReview(Review("", resId, userId,
+                                "", rating.toInt(), reviewsBinding.reviewComment.text.toString(), "null")
+                            )
+                            reviewsViewModel.getReviewList(resId, userId)
+                            Toast.makeText(requireContext(), "Your review has been inserted!", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        reviewsBinding.btnSendReview.visibility = View.INVISIBLE
+                    }
+                }
+            }else {
+                reviewsBinding.myReview.visibility = View.GONE
+            }
         }
 
         return reviewsBinding.root

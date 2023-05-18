@@ -38,7 +38,7 @@ class EditUserActivity : AppCompatActivity() {
                 binding.form6.visibility = View.GONE
                 binding.headerInfo.btnSaveInfo.setOnClickListener {
                     val queue: RequestQueue = Volley.newRequestQueue(this)
-                    val url = "http://192.168.1.131:80/fufuAPI/infoPersonal.php"
+                    val url = "http://192.168.61.94:80/fufuAPI/infoPersonal.php"
                     val stringRequest = object : StringRequest(
                         Method.POST, url,
                         Response.Listener<String> { response ->
