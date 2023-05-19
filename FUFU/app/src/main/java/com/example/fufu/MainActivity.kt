@@ -1,5 +1,6 @@
 package com.example.fufu
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -94,8 +95,8 @@ class MainActivity : AppCompatActivity() {
 
         //SharedPreferences
 //        val sharedPref = this.getSharedPreferences("currentUser", MODE_PRIVATE)
-//        sharedPref.edit().putString("userId", "1").apply()
-//        sharedPref.edit().putString("userRole", "1").apply()
-//        sharedPref.edit().putString("resId", "1").apply()
+//        sharedPref.edit().putString("userId", "").apply()
+//        sharedPref.edit().putString("userRole", "0").apply()
+//        sharedPref.edit().putString("resId", "").apply()
     }
 }

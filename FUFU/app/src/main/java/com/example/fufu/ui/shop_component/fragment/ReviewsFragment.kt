@@ -36,6 +36,7 @@ class ReviewsFragment : Fragment() {
         //userId
         userId = activity?.intent?.getStringExtra("userId").toString()
         resId = activity?.intent?.getStringExtra("resId").toString()
+        println("--------------------------------------------$resId")
         //view model
         reviewsViewModel = ViewModelProvider(this)[ReviewsViewModel::class.java]
         //binding

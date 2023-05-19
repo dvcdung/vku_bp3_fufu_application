@@ -52,6 +52,10 @@ class RestaurantActivity : AppCompatActivity() {
                     navController.navigate(R.id.galleryFragment, null, navOptions)
                     true
                 }
+                R.id.bottom_navigation_bar_map -> {
+                    navController.navigate(R.id.mapsFragment, null, navOptions)
+                    true
+                }
                 else -> false
             }
         }

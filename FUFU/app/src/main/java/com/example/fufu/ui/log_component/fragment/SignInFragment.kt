@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -19,9 +18,6 @@ import com.android.volley.toolbox.Volley
 import com.example.fufu.MainActivity
 import com.example.fufu.R
 import com.example.fufu.asset.Helper
-import com.example.fufu.data.repository.RestaurantRepository
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class SignInFragment : Fragment() {
@@ -80,33 +76,49 @@ class SignInFragment : Fragment() {
                         bio = jsonObject.getString("bio")
                         role = jsonObject.getString("role")
                         userStatus = jsonObject.getString("userStatus")
-                        //save to sharedPreference
-                        val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
-                        editor.putString("logged", "true")
-                        editor.putString("userId", userId)
-                        editor.putString("email", email)
-                        editor.putString("phone", phone)
-                        editor.putString("name", name)
-                        editor.putString("address", address)
-                        editor.putString("gender", gender)
-                        editor.putString("dob", dob)
-                        editor.putString("bio", bio)
-                        editor.putString("role", role)
-                        editor.putString("userStatus", userStatus)
+
                         //SharedPreferences
-                        val sharedPref = requireContext().getSharedPreferences("currentUser", AppCompatActivity.MODE_PRIVATE)
+                        val sharedPref = requireContext().getSharedPreferences("currentUser",
+                            AppCompatActivity.MODE_PRIVATE
+                        )
                         sharedPref.edit().putString("userId", userId).apply()
                         sharedPref.edit().putString("userRole", role).apply()
+                        sharedPref.edit().putString("resId", "").apply()
                         if (role == "1") {
-                            sharedPref.edit().putString("resId", resId).apply()
-
+                            println("hihi")
                             resId = jsonObject.getString("resId")
+                            val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
+                            editor.putString("logged", "true")
+                            editor.putString("userId", userId)
+                            editor.putString("email", email)
+                            editor.putString("phone", phone)
+                            editor.putString("name", name)
+                            editor.putString("address", address)
+                            editor.putString("gender", gender)
+                            editor.putString("dob", dob)
+                            editor.putString("bio", bio)
+                            editor.putString("role", role)
                             editor.putString("resId", resId)
-                        }else {
-                            editor.putString("resId", "")
+                            editor.putString("userStatus", userStatus)
+                            editor.apply()
+                            sharedPref.edit().putString("resId", resId).apply()
+                        } else {
+                            println("hihihhahahaahaahhahahahahhaah")
+                            val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
+                            editor.putString("logged", "true")
+                            editor.putString("userId", userId)
+                            editor.putString("email", email)
+                            editor.putString("phone", phone)
+                            editor.putString("name", name)
+                            editor.putString("address", address)
+                            editor.putString("gender", gender)
+                            editor.putString("dob", dob)
+                            editor.putString("bio", bio)
+                            editor.putString("role", role)
+                            editor.putString("userStatus", userStatus)
+                            editor.apply()
+                            sharedPref.edit().putString("resId", "null").apply()
                         }
-                        editor.apply()
-                        Toast.makeText(requireContext(), sharedPreferences.getString("role", "").toString(), Toast.LENGTH_SHORT).show()
                         val i = Intent(context, MainActivity::class.java)
                         startActivity(i)
                     } else if (status == "failed") {
@@ -142,14 +154,6 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_sign_in, container, false)
-    }
-
-    fun getResIdByUserId(userId: String): String {
-        var resId = "null"
-        lifecycleScope.launch {
-            resId = async { RestaurantRepository().getRestaurantByUserId(userId).resId }.await()
-        }
-        return resId
     }
 
 }

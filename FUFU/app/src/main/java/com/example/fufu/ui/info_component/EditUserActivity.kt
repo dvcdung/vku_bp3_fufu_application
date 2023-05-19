@@ -37,6 +37,9 @@ class EditUserActivity : AppCompatActivity() {
                 binding.form4.visibility = View.GONE
                 binding.form5.visibility = View.GONE
                 binding.form6.visibility = View.GONE
+                binding.form7.visibility = View.GONE
+                binding.form8.visibility = View.GONE
+                binding.form9.visibility = View.GONE
                 binding.headerInfo.btnSaveInfo.setOnClickListener {
                     val queue: RequestQueue = Volley.newRequestQueue(this)
                     val url = "http://${ Helper().host }/fufuAPI/infoPersonal.php"
@@ -71,6 +74,9 @@ class EditUserActivity : AppCompatActivity() {
                 binding.form4.visibility = View.VISIBLE
                 binding.form5.visibility = View.VISIBLE
                 binding.form6.visibility = View.GONE
+                binding.form7.visibility = View.GONE
+                binding.form8.visibility = View.GONE
+                binding.form9.visibility = View.GONE
                 binding.headerInfo.btnSaveInfo.setOnClickListener {
                     val queue: RequestQueue = Volley.newRequestQueue(this)
                     val url = "http://${ Helper().host }/fufuAPI/infoPersonal.php"
@@ -104,6 +110,9 @@ class EditUserActivity : AppCompatActivity() {
                 binding.form4.visibility = View.GONE
                 binding.form5.visibility = View.GONE
                 binding.form6.visibility = View.VISIBLE
+                binding.form7.visibility = View.GONE
+                binding.form8.visibility = View.GONE
+                binding.form9.visibility = View.GONE
                 binding.headerInfo.btnSaveInfo.setOnClickListener {
                     val queue: RequestQueue = Volley.newRequestQueue(this)
                     val url = "http://${ Helper().host }/fufuAPI/infoPersonal.php"

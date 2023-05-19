@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f3f3f3"
     tools:context=".ui.info_component.EditUserActivity">
 
     <include
@@ -40,6 +41,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edt_edit_background"
             android:hint="Tên của bạn"
+            android:textColorHint="@color/grey_500"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:paddingStart="10dp"/>
 
@@ -72,6 +75,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edt_edit_background"
             android:hint="Ngày sinh của bạn"
+            android:textColorHint="@color/grey_500"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:paddingStart="10dp"/>
 
@@ -104,6 +109,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edt_edit_background"
             android:hint="Giới tính của bạn"
+            android:textColorHint="@color/grey_500"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:paddingStart="10dp"/>
 
@@ -136,6 +143,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edt_edit_background"
             android:hint="Email của bạn"
+            android:textColorHint="@color/grey_500"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:paddingStart="10dp"/>
 
@@ -168,6 +177,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edt_edit_background"
             android:hint="Địa chỉ của bạn"
+            android:textColorHint="@color/grey_500"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:paddingStart="10dp"/>
 
@@ -200,6 +211,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edt_edit_background"
             android:hint="Bio của bạn"
+            android:textColorHint="@color/grey_500"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:paddingStart="10dp"/>
 
@@ -232,6 +245,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edt_edit_background"
             android:hint="Mật khẩu hiện tại của bạn"
+            android:textColorHint="@color/grey_500"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:inputType="textPassword"
             android:paddingStart="10dp"/>
@@ -265,6 +280,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edt_edit_background"
             android:hint="Mật khẩu mới"
+            android:textColorHint="@color/grey_500"
+            android:textColor="@color/black"
             android:inputType="textPassword"
             android:paddingVertical="8dp"
             android:paddingStart="10dp"/>
@@ -298,6 +315,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edt_edit_background"
             android:hint="Nhập lại mật khẩu mới"
+            android:textColorHint="@color/grey_500"
+            android:textColor="@color/black"
             android:paddingVertical="8dp"
             android:inputType="textPassword"
             android:paddingStart="10dp"/>

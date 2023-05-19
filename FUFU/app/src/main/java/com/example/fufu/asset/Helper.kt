@@ -15,7 +15,7 @@ import java.util.*
 class Helper {
     private lateinit var sharePref: SharedPreferences
     private val gson = Gson()
-    val host: String = "192.168.1.9:80"
+    val host: String = "192.168.204.94:80"
 
     fun checkUserRole(context: Context): Boolean {
         sharePref = context.getSharedPreferences("currentUser", AppCompatActivity.MODE_PRIVATE)

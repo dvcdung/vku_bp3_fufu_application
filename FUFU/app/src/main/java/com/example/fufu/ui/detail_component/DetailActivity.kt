@@ -72,21 +72,21 @@ class DetailActivity : AppCompatActivity() {
                 "searchFood" -> {
                     val i = Intent(this, RestaurantActivity::class.java)
                     i.putExtra("userId", Helper().getCurrentUser(applicationContext))
-                    i.putExtra("resId", foodSearch!!.resId)
+                    i.putExtra("resId", foodSearch!!.resId.toString())
                     startActivity(i)
                     finish()
                 }
                 "homeFood" -> {
                     val i = Intent(this, RestaurantActivity::class.java)
                     i.putExtra("userId", Helper().getCurrentUser(applicationContext))
-                    i.putExtra("resId", foodHome!!.resId)
+                    i.putExtra("resId", foodHome!!.resId.toString())
                     startActivity(i)
                     finish()
                 }
                 "likeFood" -> {
                     val i = Intent(this, RestaurantActivity::class.java)
                     i.putExtra("userId", Helper().getCurrentUser(applicationContext))
-                    i.putExtra("resId", foodLike!!.resId)
+                    i.putExtra("resId", foodLike!!.resId.toString())
                     startActivity(i)
                     finish()
                 }
