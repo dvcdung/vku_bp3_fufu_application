@@ -1,21 +1,15 @@
 package com.example.fufu.ui.shop_component.fragment
 
 import android.annotation.SuppressLint
-import android.content.ClipData.Item
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import com.example.fufu.R
 import com.example.fufu.asset.Helper
 import com.example.fufu.data.model.CartItem
-import com.example.fufu.data.model.Restaurant
 import com.example.fufu.databinding.FragmentRestaurantDetailBinding
 import com.example.fufu.ui.adapter.RestaurantMenuItemAdapter
 import com.example.fufu.ui.cart_component.CartActivity
@@ -29,6 +23,7 @@ class RestaurantDetailFragment : Fragment() {
     private lateinit var restaurantMenuItemAdapter: RestaurantMenuItemAdapter
     //Variable
     private lateinit var userId: String
+    private lateinit var resId: String
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
@@ -37,6 +32,8 @@ class RestaurantDetailFragment : Fragment() {
     ): View {
         //userId
         userId = activity?.intent?.getStringExtra("userId").toString()
+        //resId 
+        resId = activity?.intent?.getStringExtra("resId").toString()
         //view model
         restaurantDetailViewModel = ViewModelProvider(this)[RestaurantDetailViewModel::class.java]
         //binding
@@ -44,8 +41,8 @@ class RestaurantDetailFragment : Fragment() {
         //adapter
         restaurantMenuItemAdapter = RestaurantMenuItemAdapter(emptyList(), emptyList())
 
-        restaurantDetailViewModel.getRestaurantByUserId(userId)
-        restaurantDetailViewModel.getMenuList(userId)
+        restaurantDetailViewModel.getRestaurantByResId(resId)
+        restaurantDetailViewModel.getMenuList(resId)
         restaurantDetailViewModel.getCart(requireContext())
 
         //restaurant detail

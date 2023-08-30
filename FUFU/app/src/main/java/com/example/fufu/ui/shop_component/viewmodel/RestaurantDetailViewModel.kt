@@ -1,10 +1,6 @@
 package com.example.fufu.ui.shop_component.viewmodel
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,8 +8,6 @@ import com.example.fufu.asset.Helper
 import com.example.fufu.data.model.CartItem
 import com.example.fufu.data.model.Item
 import com.example.fufu.data.model.Restaurant
-import com.example.fufu.data.network.RetrofitHelper
-import com.example.fufu.data.network.restaurant.MenuApi
 import com.example.fufu.data.repository.MenuRepository
 import com.example.fufu.data.repository.RestaurantRepository
 import kotlinx.coroutines.launch
@@ -27,15 +21,15 @@ class RestaurantDetailViewModel : ViewModel() {
     val restaurantLiveData = MutableLiveData<Restaurant>()
     val cartLiveData = MutableLiveData<List<CartItem>>()
 
-    fun getMenuList(userId: String) {
+    fun getMenuList(resId: String) {
         viewModelScope.launch {
-            val response = menuRepository.getMenuList(userId)
+            val response = menuRepository.getMenuList(resId)
             menuListLiveData.value = response
         }
     }
-    fun getRestaurantByUserId(userId: String) {
+    fun getRestaurantByResId(resId: String) {
         viewModelScope.launch {
-            val response = restaurantRepository.getRestaurantByUserId(userId)
+            val response = restaurantRepository.getRestaurantByResId(resId)
             restaurantLiveData.value = response
         }
     }

@@ -85,6 +85,8 @@ class HomeFragment : Fragment() {
                 intent.putExtra("userId", Helper().getCurrentUser(requireContext()))
                 intent.putExtra("resId", Helper().getCurrentResId(requireContext()))
                 startActivity(intent)
+            } else {
+                
             }
         }
     }

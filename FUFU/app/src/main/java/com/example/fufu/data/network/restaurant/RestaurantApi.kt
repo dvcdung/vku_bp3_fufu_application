@@ -5,6 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface RestaurantApi {
-    @GET("api/restaurant/{userId}")
-    suspend fun getRestaurantByUserId(@Path("userId") userId: String): List<Restaurant>
+    @GET("api/restaurant/{resId}")
+    suspend fun getRestaurantByResId(@Path("resId") resId: String): List<Restaurant>
 }

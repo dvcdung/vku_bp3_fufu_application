@@ -48,13 +48,13 @@ class ReviewsFragment : Fragment() {
         reviewsBinding.btnSendReview.visibility = View.INVISIBLE
         reviewsViewModel.reviewListLiveData.observe(viewLifecycleOwner) {
             reviewsList = it
-            if(it[0].userId == userId) {
+            if(it.isNotEmpty() && it[0].userId == userId) {
                 myReview = listOf(it[0])
             }
             restaurantReviewItemAdapter = RestaurantReviewItemAdapter(reviewsList, reviewsViewModel)
             reviewsBinding.rcvRestaurantReviewList.adapter = restaurantReviewItemAdapter
 
-            if(reviewsList[0].userId != userId) {
+            if(reviewsList.isEmpty() || reviewsList[0].userId != userId) {
                 //my review exist
                 reviewsBinding.myReview.visibility = View.VISIBLE
                 reviewsBinding.reviewPoint.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->

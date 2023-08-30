@@ -11,10 +11,10 @@ class MapsViewModel: ViewModel() {
     private val restaurantRepository = RestaurantRepository()
     val restaurantLiveData = MutableLiveData<Restaurant>()
 
-    fun getRestaurantByUserId(userId: String) {
-        viewModelScope.launch {
-            val response = restaurantRepository.getRestaurantByUserId(userId)
-            restaurantLiveData.value = response
-        }
-    }
+//    fun getRestaurantByUserId(userId: String) {
+//        viewModelScope.launch {
+//            val response = restaurantRepository.getRestaurantByUserId(userId)
+//            restaurantLiveData.value = response
+//        }
+//    }
 }

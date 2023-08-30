@@ -7,7 +7,7 @@ import com.example.fufu.data.network.restaurant.RestaurantApi
 class RestaurantRepository {
     private val restaurantApi: RestaurantApi = RetrofitHelper.getInstance().create(RestaurantApi::class.java)
 
-    suspend fun getRestaurantByUserId(userId: String): Restaurant {
-        return restaurantApi.getRestaurantByUserId(userId)[0]
+    suspend fun getRestaurantByResId(resId: String): Restaurant {
+        return restaurantApi.getRestaurantByResId(resId)[0]
     }
 }

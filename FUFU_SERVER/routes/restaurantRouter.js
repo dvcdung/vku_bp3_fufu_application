@@ -7,7 +7,7 @@ const restaurantRouter = express.Router();
 
 const fileUploader = require('../middleware/cloudinaryUploader')
 
-restaurantRouter.get('/:userId', restaurantController().index);
+restaurantRouter.get('/:resId', restaurantController().index);
 
 restaurantRouter.get('/menu/item/:resId', menuController().index);
 restaurantRouter.post('/menu/item/add', menuController().create);
